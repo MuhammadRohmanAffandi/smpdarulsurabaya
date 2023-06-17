@@ -53,6 +53,16 @@ class CalonSiswaController extends Controller
         return redirect('/statuspendaftaran')->with('calonSiswa', $calonSiswa);
     }
 
+    public function buktiPendaftaran(string $id)
+    {
+        $calonSiswa = CalonSiswa::findOrFail($id);
+        if ($calonSiswa->status != "Pendaftaran Selesai") {
+            return redirect('/');
+        } else {
+            return view('buktiPendaftaran')->with('calon', $calonSiswa);
+        }
+    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -136,9 +146,16 @@ class CalonSiswaController extends Controller
         ]);
         // echo "<script>console.log('Debug Objects: " . $request->bookId . "' );</script>";
         $path = $request->file('bukti_pembayaran');
-        $nama_path_pas_foto = time() . rand(1, 99) . '.' . $path->extension();
+        $nama_path = time() . rand(1, 99) . '.' . $path->extension();
         $tujuan_upload = 'bukti_pembayaran';
-        $path->move($tujuan_upload, $nama_path_pas_foto);
+        $path->move($tujuan_upload, $nama_path);
+        $calonSiwa = CalonSiswa::find($request->bookId);
+        $calonSiwa->bukti_pembayaran = $nama_path;
+        $calonSiwa->status = "Pengecekan Bukti Pembayaran";
+        $calonSiwa->update();
+        $calonSiswa = CalonSiswa::where('code_pendaftaran', 'LIKE', "%{$calonSiwa->code}%")->get();
+        // Alert::success('Success', 'Bukti Pembayaran Berhasil Diupload!');
+        return redirect()->back()->with('calonSiswa', $calonSiswa);
         // $path = $request->file('bukti_pembayaran');
         // echo "<script>console.log('Debug Objects: " . $path . "' );</script>";
         // echo "<script>console.log('Debug Objects: " . $request->bukti_pembayaran . "' );</script>";

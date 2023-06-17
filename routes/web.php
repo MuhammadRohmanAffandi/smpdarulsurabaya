@@ -29,9 +29,10 @@ Route::get('/contact', function () {
 });
 Route::resource('calonSiswa', CalonSiswaController::class);
 Route::get('/calonSiswa/{calonSiswa}/detail', [HomeController::class, 'detail'])->name('detail');
-Route::get('/calonSiswa/{calonSiswa}/editstatus', [HomeController::class, 'editStatus'])->name('   editStatus');
 Route::get('/calonSiswa/{path}/showkk', [HomeController::class, 'showKk'])->name('showKk');
 Route::get('/calonSiswa/{path}/showijasah', [HomeController::class, 'showIjasah'])->name('showIjasah');
+Route::get('/calonSiswa/{path}/showbuktipembayaran', [HomeController::class, 'showBuktiPembayaran'])->name('showBuktiPembayaran');
+Route::get('/calonsiswa/{path}/buktipendaftaran', [CalonSiswaController::class, 'buktiPendaftaran'])->name('buktiPendaftaran');
 Route::post('/updateStatus', [HomeController::class, 'updateStatus'])->name('updateStatus');
 Route::post('/uploadbuktipembayaran', [CalonSiswaController::class, 'uploadBuktiPembayaran'])->name('uploadBuktiPembayaran');
 Route::get('/cekstatuspendaftaran', function () {

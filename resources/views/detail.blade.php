@@ -86,7 +86,6 @@
                 @php
                 $json = json_decode($calon);
                 @endphp
-                <th scope="col"> {{$json->status}}</th>
                 <div class="margin-table-detail">
                     <table class="table">
                         <tbody>
@@ -179,8 +178,8 @@
                                                 <select id="cars" name="status">
                                                     <option value="none" selected disabled hidden>Pilih Satu</option>
                                                     <option value="Menunggu Pembayaran">Menunggu Pembayaran</option>
-                                                    <option value="Bukti Pembayaran Gagal Diverifikasi">Bukti Pembayaran Gagal Diverifikasi</option>
                                                     <option value="Pengecekan Bukti Pembayaran">Pengecekan Bukti Pembayaran</option>
+                                                    <option value="Bukti Pembayaran Gagal Diverifikasi">Bukti Pembayaran Gagal Diverifikasi</option>
                                                     <option value="Pendaftaran Selesai">Pendaftaran Selesai</option>
                                                 </select>
                                             </div>
@@ -194,7 +193,7 @@
                             <tr>
                                 <th scope="row">Bukti Pembayaran</th>
                                 @if($json->bukti_pembayaran == NULL)
-                                <td>Tidak ada</td>
+                                <td>Tidak Ada Bukti Pembayaran</td>
                                 @else
                                 <td> <a class="btn btn-primary" href="{{ route('showBuktiPembayaran', $json->bukti_pembayaran)}}" target="_blank">Lihat File</a></td>
                                 @endif

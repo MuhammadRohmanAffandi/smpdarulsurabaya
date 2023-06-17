@@ -116,7 +116,78 @@ $json_output = json_decode(Session::get('calonSiswa'));
    </div>
    <!-- contact -->
    @elseif($json_output[0]->status == "Pengecekan Bukti Pembayaran")
+   <!-- contact -->
+   <div class="text_align_center margin-title-status">
+      <h1>STATUS PENDAFTARAN:</h1>
+   </div>
+   <div class="form-step margin-core-status">
+      <div class="container">
+         <div class="row ">
+            <div class="col-md-12">
+               <div class="titlepage text_align_center">
+                  <h2>Pengecekan Bukti Pembayaran</h2>
+               </div>
+            </div>
+         </div>
+         <div class="content-status-pendaftaran text_align_center">
+            <p>Pengecekan <strong>bukti pembayaran </strong>oleh <strong>panitia PPDB </strong>SMP Darul Ulum Surabaya.</p>
+            <br>
+            <a href="{{ url('/')}}" class="button">Kembali Keberanda</a>
+            <br>
+         </div>
+      </div>
+   </div>
+   <!-- contact -->
+   @elseif($json_output[0]->status == "Bukti Pembayaran Gagal Diverifikasi")
+   <!-- contact -->
+   <div class="text_align_center margin-title-status">
+      <h1>STATUS PENDAFTARAN:</h1>
+   </div>
+   <div class="form-step margin-core-status">
+      <div class="container">
+         <div class="row ">
+            <div class="col-md-12">
+               <div class="titlepage text_align_center gagal">
+                  <h2>Bukti pembayaran gagal diverifikasi</h2>
+               </div>
+            </div>
+         </div>
+         <div class="content-status-pendaftaran text_align_center">
+            <p>Bukti pembayaran gagal diverifikasi, silahkan datang kesekolah untuk informasi lebih lanjut.</p>
+            <br>
+            <a href="{{ url('/')}}" class="button">Kembali Keberanda</a>
+            <br>
+         </div>
+      </div>
+   </div>
+   <!-- contact -->
    @else
+   <!-- contact -->
+   <div class="text_align_center margin-title-status">
+      <h1>STATUS PENDAFTARAN:</h1>
+   </div>
+   <div class="form-step margin-core-status">
+      <div class="container">
+         <div class="row ">
+            <div class="col-md-12">
+               <div class="titlepage text_align_center">
+                  <h2>Pendaftaran Selesai</h2>
+               </div>
+            </div>
+         </div>
+         <div class="content-status-pendaftaran text_align_center">
+            <p>Silahkan datang kesekolah untuk melakukan <strong>pendaftaran ulang </strong> dengan membawa<strong> fotokopi KK</strong> dan<strong> Bukti Pendaftaran.</strong></p>
+            <br>
+            <p>
+               <strong> Bukti pendaftaran</strong> dapat<strong> didownload</strong> pada link dibawah ini:
+            </p>
+            <br>
+            <td> <a class="button" href="{{ route('buktiPendaftaran', $json_output[0]->id)}}">Lihat Bukti Pendaftarn</a></td>
+         </div>
+      </div>
+   </div>
+   </div>
+   <!-- contact -->
    @endif
    <!--  footer -->
    <footer>

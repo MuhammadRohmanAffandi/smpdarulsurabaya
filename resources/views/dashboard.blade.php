@@ -93,6 +93,7 @@
                             <th scope="col">Status</th>
                             <th scope="col">Detail</th>
                             <th scope="col">Ubah Status</th>
+                            <th scope="col">Bukti Pembayaran</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -128,6 +129,11 @@
                                 </div>
 
                             </td>
+                            @if($calonSiswas->bukti_pembayaran == NULL)
+                            <td>Tidak Ada Bukti Pembayaran</td>
+                            @else
+                            <td> <a class="btn btn-primary" href="{{ route('showBuktiPembayaran', $calonSiswas->bukti_pembayaran)}}" target="_blank">Lihat File</a></td>
+                            @endif
                         </tr>
                         @endforeach
                     </tbody>
