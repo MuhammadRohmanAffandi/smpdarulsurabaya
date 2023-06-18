@@ -17,6 +17,9 @@ class CheckRole
      */
     public function handle(Request $request, Closure $next): Response
     {
+        if (Auth::user() == NULL) {
+            return redirect('/login');
+        }
         $roles = array_slice(func_get_args(), 2);
 
         foreach ($roles as $role) {
@@ -26,6 +29,6 @@ class CheckRole
             }
         }
 
-        return redirect('/');
+        return redirect('/pembayaranspp');
     }
 }

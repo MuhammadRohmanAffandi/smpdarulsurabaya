@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\CalonSiswa;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -66,8 +68,27 @@ class HomeController extends Controller
         ]);
         // echo "<script>console.log('Debug Objects: " . $request->bookId . $request->status . "' );</script>";
         $calonSiswa = CalonSiswa::find($request->bookId);
+        if ($request->status == "Pendaftaran Selesai" && $calonSiswa->bukti_pembayaran == "") {
+            return redirect()->back()->with('message', 'Calon Siswa Belum Mengunggah Bukti Pembayaran!');
+        }
         $calonSiswa->status = $request->status;
         $calonSiswa->update();
+        $calonSiswa = CalonSiswa::find($request->bookId);
+        if ($request->status == "Pendaftaran Selesai") {
+            $cek = DB::table('siswa')->where('id_pendaftaran', $calonSiswa->id)->get();
+            if (!count($cek) > 0) {
+                $year = Carbon::now()->format('Y');
+                DB::table('siswa')->insert(
+                    [
+                        'nama' => $calonSiswa->nama,
+                        'nisn' => $calonSiswa->nisn,
+                        'id_pendaftaran' => $calonSiswa->id,
+                        'tahun_masuk' => $year,
+                        'lulus' => 0
+                    ]
+                );
+            }
+        }
         return redirect('dashboard');
     }
 }

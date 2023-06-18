@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SMP Darul Ulum Surabaya</title>
     <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
-    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
     <!-- style css -->
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -90,62 +90,58 @@
                         <tr class="table-top">
                             <th scope="col">No</th>
                             <th scope="col">Nama</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Detail</th>
-                            <th scope="col">Ubah Status</th>
-                            <th scope="col">Bukti Pembayaran</th>
+                            <th scope="col">NISN</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Tahun Masuk</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($calonSiswa as $calonSiswas)
+                        @foreach($siswa as $siswas)
                         <tr>
                             <th scope="row">{{$loop->iteration}}</th>
-                            <td>{{$calonSiswas->nama}}</td>
-                            <td>{{$calonSiswas->status}}</td>
-                            <td><a href="{{ route('detail', $calonSiswas->id)}}" class="btn btn-primary">Lihat</a></td>
+                            <td>{{$siswas->nama}}</td>
+                            <td>{{$siswas->nisn}}</td>
+                            @if($siswas->id_user == NULL)
                             <td>
-                                <a data-toggle="modal" data-id="{{$calonSiswas->id}}" title="Add this item" class="open-AddBookDialog btn btn-primary" href="#addBookDialog">Ubah</a>
+                                <a data-toggle="modal" data-id="{{$siswas->id}}" title="Add this item" class="open-AddBookDialog btn btn-primary" href="#addBookDialog">Tambah Email</a>
                                 <div class="modal hide" id="addBookDialog">
                                     <div class="modal-header">
-                                        <h3 class="modal-title">Ubah Status</h3>
+                                        <h3 class="modal-title">Tambah Email</h3>
                                         <button class="close" data-dismiss="modal">×</button>
                                     </div>
-                                    <form id="subscribe-email-form" enctype="multipart/form-data" method="POST" action="{{ route('updateStatus')}}">
+                                    <form id="subscribe-email-form" enctype="multipart/form-data" method="POST" action="{{ route('tambahEmailSiswa')}}">
                                         @csrf
                                         <div class="modal-body">
                                             <input type="hidden" name="bookId" id="bookId" value="" />
-                                            <select id="cars" name="status">
-                                                <option value="none" selected disabled hidden>Pilih Satu</option>
-                                                <option value="Menunggu Pembayaran">Menunggu Pembayaran</option>
-                                                <option value="Pengecekan Bukti Pembayaran">Pengecekan Bukti Pembayaran</option>
-                                                <option value="Bukti Pembayaran Gagal Diverifikasi">Bukti Pembayaran Gagal Diverifikasi</option>
-                                                <option value="Pendaftaran Selesai">Pendaftaran Selesai</option>
-                                            </select>
+                                            <input id="email" type="email" class="form-control" name="email" />
                                         </div>
                                         <div class="modal-footer">
                                             <input type="submit" value="SUBMIT" class="btn-primary" />
                                         </div>
                                     </form>
                                 </div>
-
                             </td>
-                            @if($calonSiswas->bukti_pembayaran == NULL)
-                            <td>Tidak Ada Bukti Pembayaran</td>
                             @else
-                            <td> <a class="btn btn-primary" href="{{ route('showBuktiPembayaran', $calonSiswas->bukti_pembayaran)}}" target="_blank">Lihat File</a></td>
+                            @php
+                            $user = DB::table('users')->where('id', $siswas->id_user)->get();
+                            @endphp
+                            <td>{{$user[0]->email}}</td>
                             @endif
+                            <td>{{$siswas->tahun_masuk}}</td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
+                <a href="{{url('/tambahsiswa')}}">
+                    <div class="btn-float-cs"> + </div>
+                </a>
                 @if(session()->has('message'))
-                <div class="alert alert-danger" style="position:fixed; 
-    bottom: 0px; 
-    left: 0px; 
-    width: 100%;
-    z-index:9999; 
-    border-radius:0px">
+                <div class="alert alert-success alert-float">
                     {{ session()->get('message') }}
+                </div>
+                @elseif(session()->has('error'))
+                <div class="alert alert-danger alert-float">
+                    {{ session()->get('error') }}
                 </div>
                 @endif
             </div>

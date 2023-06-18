@@ -22,9 +22,14 @@
                             <div class="card-body dream">
                                 <br>
                                 <br>
-                                <h2 class="text-center">registration user</h2>
+                                <h2 class="text-center">Form Tambah Siswa</h2>
+                                @if(session()->has('message'))
+                                <div class="alert alert-success">
+                                    {{ session()->get('message') }}
+                                </div>
+                                @endif
                                 <br>
-                                <form method="POST" action="{{ route('registerUser') }}">
+                                <form method="POST" action="{{ route('tambahSiswa') }}">
                                     @csrf
 
                                     <div class="row mb-3">
@@ -42,45 +47,36 @@
                                     </div>
 
                                     <div class="row mb-3">
-                                        <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+                                        <label for="nisn" class="col-md-4 col-form-label text-md-end">{{ __('NISN') }}</label>
 
                                         <div class="col-md-6">
-                                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                            <input id="nisn" type="text" class="form-control @error('nisn') is-invalid @enderror" name="nisn" value="{{ old('nisn') }}" required autocomplete="nisn">
 
-                                            @error('email')
+                                            @error('nisn')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                             @enderror
                                         </div>
                                     </div>
-
                                     <div class="row mb-3">
-                                        <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+                                        <label for="tahun_masuk" class="col-md-4 col-form-label text-md-end">{{ __('Tahun masuk') }}</label>
 
                                         <div class="col-md-6">
-                                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                            <input id="lulus" type="text" class="form-control @error('lulus') is-invalid @enderror" name="lulus" value="{{ old('lulus') }}" required autocomplete="lulus">
 
-                                            @error('password')
+                                            @error('tahun_masuk')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                             @enderror
-                                        </div>
-                                    </div>
-
-                                    <div class="row mb-3">
-                                        <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
-
-                                        <div class="col-md-6">
-                                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                                         </div>
                                     </div>
 
                                     <div class="row mb-0">
                                         <div class="col-md-6 offset-md-4">
                                             <button type="submit" class="btn btn-primary">
-                                                {{ __('Register') }}
+                                                {{ __('Tambah') }}
                                             </button>
                                         </div>
                                     </div>

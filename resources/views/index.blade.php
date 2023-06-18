@@ -56,13 +56,6 @@
                   <div class="collapse navbar-collapse" id="navbarsExample04">
                      <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                           <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                              Logout
-                           </a>
-
-                           <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                              {{ csrf_field() }}
-                           </form>
                            <a class="nav-link" href="/">Beranda</a>
                         </li>
                         <li class="nav-item">
@@ -74,6 +67,28 @@
                         <li class="nav-item">
                            <a class="nav-link" href="cekstatuspendaftaran">cek status</a>
                         </li>
+                        @if(Auth::check())
+                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                           <div style="
+                           background-color: #007bff;
+                           padding: 0.375rem 0.75rem;
+                           border-radius: 10%;
+                           box-shadow: 0 6px 10px 0 #666;
+                           transition: all 0.1s ease-in-out;
+                           color: white;
+                           text-align: center;
+
+                           position: fixed;
+                           right: 50px;
+                           bottom: 50px;">
+                              Logout
+                           </div>
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                           {{ csrf_field() }}
+                        </form>
+                        @endif
                      </ul>
                   </div>
                </nav>

@@ -31,6 +31,8 @@ return new class extends Migration
             $table->string('file_path_ijasah');
             $table->string('tahun_lulus');
             $table->string('code_pendaftaran');
+            $table->string('status');
+            $table->string('bukti_pembayaran')->nullable();
             $table->timestamps();
         });
     }
