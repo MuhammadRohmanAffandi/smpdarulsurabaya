@@ -18,6 +18,8 @@ class SiswaController extends Controller
             'tahun_masuk' => 'required|max:255'
         ]);
 
+        echo $request;
+
         Siswa::create([
             'nama' => $request->name,
             'nisn' => $request->nisn,
@@ -32,7 +34,16 @@ class SiswaController extends Controller
         $request->validate([
             'email' => 'required'
         ]);
+        //lihat pada tabel user apakah ada email tersebut
         $iduser = DB::table('users')->where('email', $request->email)->get();
+        //jika tidak ada kembali dengan pesan email belum terdaftar
+        if (!count($iduser) > 0) {
+            return redirect()->back()->with('error', 'Email Tidak Terdaftar!');
+        }
+        if ($iduser[0]->role != "siswa") {
+            return redirect()->back()->with('error', 'Pastikan Role User Adalah Siswa!');
+        }
+        //cek pada table siswas apakah email tersebut telah digunakan atau tidak jika sudah kembali dengan pesan eror
         $cek = DB::table('siswas')->where('id_user', $iduser[0]->id)->get();
         if (count($cek) > 0) {
             return redirect()->back()->with('error', 'Email Telah Digunakan!');
@@ -46,6 +57,6 @@ class SiswaController extends Controller
     public function index()
     {
         $siswa = Siswa::all();
-        return view('allSiswa', compact('siswa'));
+        return view('admin.allSiswa', compact('siswa'));
     }
 }

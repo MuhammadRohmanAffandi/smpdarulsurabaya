@@ -16,7 +16,7 @@ class CalonSiswaController extends Controller
     {
         //
         $calonSiswa = CalonSiswa::all();
-        return view('dashboard', compact('calonSiswa'));
+        return view('admin', compact('calonSiswa'));
     }
 
     /**

@@ -63,7 +63,7 @@
                                         <label for="tahun_masuk" class="col-md-4 col-form-label text-md-end">{{ __('Tahun masuk') }}</label>
 
                                         <div class="col-md-6">
-                                            <input id="lulus" type="text" class="form-control @error('lulus') is-invalid @enderror" name="lulus" value="{{ old('lulus') }}" required autocomplete="lulus">
+                                            <input id="tahun_masuk" type="text" class="form-control @error('tahun_masuk') is-invalid @enderror" name="tahun_masuk" value="{{ old('tahun_masuk') }}" required autocomplete="tahun_masuk">
 
                                             @error('tahun_masuk')
                                             <span class="invalid-feedback" role="alert">

@@ -130,6 +130,25 @@
                               </div>
                            </div>
                         </div>
+                        <!-- second slide-->
+                        <div class="carousel-item">
+                           <div class="carousel-caption relative">
+                              <div class="row">
+                                 <div class="col-md-6">
+                                    <div class="dream">
+                                       <h2>SISTEM PEMBAYARAN SPP</h2>
+                                       <h1>SMP DARUL ULUM SURABAYA</h1>
+                                       <a class="read_more" href="{{url('pembayaranspp')}}">Akses Sistem</a>
+                                    </div>
+                                 </div>
+                                 <div class="col-md-6">
+                                    <div class="dream_img">
+                                       <figure><img src="images/dream_img_spp.png" alt="#" /></figure>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
                         <!-- third slide-->
                         <div class="carousel-item">
                            <div class="carousel-caption relative">

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('id_user')->nullable();
             $table->string('id_pendaftaran')->nullable();
             $table->string('tahun_masuk');
-            $table->boolean('lulus');
+            $table->boolean('lulus')->default(0);
             $table->timestamps();
         });
     }

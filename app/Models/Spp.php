@@ -12,6 +12,7 @@ class Spp extends Model
         'bulan',
         'tahun',
         'id_siswa',
-        'nominal'
+        'nominal',
+        'lunas'
     ];
 }

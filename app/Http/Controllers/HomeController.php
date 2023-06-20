@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CalonSiswa;
+use App\Models\Siswa;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -20,21 +21,21 @@ class HomeController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Show the application admin.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
     {
         $calonSiswa = CalonSiswa::all();
-        return view('dashboard', compact('calonSiswa'));
+        return view('admin.allCalonSiswa', compact('calonSiswa'));
     }
 
     public function detail(string $id)
     {
         $calonSiswa = CalonSiswa::findOrFail($id);
         // echo "<script>console.log('Debug Objects: " . $calonSiswa . "' );</script>";
-        return view('detail')->with('calon', $calonSiswa);
+        return view('admin.detail')->with('calon', $calonSiswa);
     }
     public function editStatus(string $id)
     {
@@ -78,17 +79,15 @@ class HomeController extends Controller
             $cek = DB::table('siswa')->where('id_pendaftaran', $calonSiswa->id)->get();
             if (!count($cek) > 0) {
                 $year = Carbon::now()->format('Y');
-                DB::table('siswa')->insert(
-                    [
-                        'nama' => $calonSiswa->nama,
-                        'nisn' => $calonSiswa->nisn,
-                        'id_pendaftaran' => $calonSiswa->id,
-                        'tahun_masuk' => $year,
-                        'lulus' => 0
-                    ]
-                );
+                Siswa::create([
+                    'nama' => $calonSiswa->nama,
+                    'nisn' => $calonSiswa->nisn,
+                    'id_pendaftaran' => $calonSiswa->id,
+                    'tahun_masuk' => $year,
+                    'lulus' => 0
+                ]);
             }
         }
-        return redirect('dashboard');
+        return redirect('allcalonsiswa');
     }
 }

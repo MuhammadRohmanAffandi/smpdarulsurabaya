@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -13,7 +14,7 @@ class UserController extends Controller
     public function index()
     {
         $user = User::all();
-        return view('allUser', compact('user'));
+        return view('admin.allUser', compact('user'));
     }
 
     public function updateRole(Request $request)
@@ -21,7 +22,9 @@ class UserController extends Controller
         $request->validate([
             'role' => 'required'
         ]);
-        // echo "<script>console.log('Debug Objects: " . $request->bookId . $request->role . "' );</script>";
+        if (Auth::id() == $request->bookId) {
+            return redirect()->back()->with('message', 'Anda Tidak Dapat Merubah Role Anda Sendiri!');
+        }
         $user = User::find($request->bookId);
         $user->role = $request->role;
         $user->update();

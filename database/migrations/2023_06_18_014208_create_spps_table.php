@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('tahun');
             $table->string('id_siswa');
             $table->decimal('nominal');
+            $table->boolean('lunas')->default(0);
             $table->timestamps();
         });
     }

@@ -31,9 +31,9 @@
                             <span class="hide-menu">Home</span>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="/dashboard" aria-expanded="false">
+                            <a class="sidebar-link" href="/admin" aria-expanded="false">
                                 <span>
-                                    <i class="ti ti-layout-dashboard"></i>
+                                    <i class="ti ti-layout-admin"></i>
                                 </span>
                                 <span class="hide-menu">Dashboard</span>
                             </a>
