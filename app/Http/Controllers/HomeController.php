@@ -76,7 +76,7 @@ class HomeController extends Controller
         $calonSiswa->update();
         $calonSiswa = CalonSiswa::find($request->bookId);
         if ($request->status == "Pendaftaran Selesai") {
-            $cek = DB::table('siswa')->where('id_pendaftaran', $calonSiswa->id)->get();
+            $cek = DB::table('siswas')->where('id_pendaftaran', $calonSiswa->id)->get();
             if (!count($cek) > 0) {
                 $year = Carbon::now()->format('Y');
                 Siswa::create([
@@ -88,6 +88,6 @@ class HomeController extends Controller
                 ]);
             }
         }
-        return redirect('allcalonsiswa');
+        return redirect('allcalonsiswa')->with('berhasil_dirubah', 'status berhasil dirubah');
     }
 }

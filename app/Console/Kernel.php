@@ -2,8 +2,12 @@
 
 namespace App\Console;
 
+use App\Models\CalonSiswa;
+use App\Models\DailyUserCount;
 use App\Models\Siswa;
 use App\Models\Spp;
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use Symfony\Component\Console\Output\ConsoleOutput;
@@ -26,6 +30,15 @@ class Kernel extends ConsoleKernel
                     'nominal' => '140000',
                 ]);
             }
+        })->everyMinute();
+        $schedule->call(function () {
+            $date = Carbon::now()->format('Y-m-d');
+            $count = CalonSiswa::whereDate('created_at', $date)->count();
+
+            DailyUserCount::updateOrCreate(
+                ['date' => $date],
+                ['count' => $count]
+            );
         })->everyMinute();
     }
 

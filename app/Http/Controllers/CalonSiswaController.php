@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 require "HomeController.php";
 
 use App\Models\CalonSiswa;
+use App\Models\DailyUserCount;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CalonSiswaController extends Controller
 {
@@ -17,6 +19,39 @@ class CalonSiswaController extends Controller
         //
         $calonSiswa = CalonSiswa::all();
         return view('admin', compact('calonSiswa'));
+    }
+    public function dashboard()
+    {
+        //
+        $usersByMonth = DB::table('calon_siswas')
+            ->select(DB::raw('MONTH(created_at) as month'), DB::raw('COUNT(*) as total'))
+            ->groupBy(DB::raw('MONTH(created_at)'))
+            ->get();
+
+        // Menginisialisasi array bulan dengan jumlah pendaftar awal 0
+        $monthlyData = [];
+        for ($i = 1; $i <= 12; $i++) {
+            $monthlyData[$i] = 0;
+        }
+
+        // Memasukkan jumlah pendaftar ke dalam array bulan
+        foreach ($usersByMonth as $user) {
+            $month = $user->month;
+            $totalUsers = $user->total;
+            $monthlyData[$month] = $totalUsers;
+        }
+
+        // Menampilkan data bulan dengan jumlah pendaftar
+        for ($i = 1; $i <= 12; $i++) {
+            $month = date('F', mktime(0, 0, 0, $i, 1));
+            $totalUsers = $monthlyData[$i];
+
+            // echo "Bulan $month: $totalUsers user<br>";
+        }
+        // dd($monthlyData);
+        // $dailyCount = DailyUserCount::select('count')->get();
+        // $date = DailyUserCount::select('date')->get();
+        return view('admin.dashboard', compact('monthlyData'));
     }
 
     /**
@@ -47,8 +82,10 @@ class CalonSiswaController extends Controller
         $request->validate([
             'code' => 'required'
         ]);
-        $calonSiswa = CalonSiswa::where('code_pendaftaran', 'LIKE', "%{$request->code}%")->get();
-        // echo "<script>console.log('Debug Objects: " . $calonSiswa . "' );</script>";
+        $calonSiswa = CalonSiswa::where('code_pendaftaran', $request->code)->get();
+        if (count($calonSiswa) == 0) {
+            return redirect()->back()->with('error', 'Data Tidak Ditemukan, pastikan kode pendaftaran anda benar, jika anda menghilangkan kode pendaftaran silahkan hubungi panitia untuk informasi lebih lanjut.');
+        }
 
         return redirect('/statuspendaftaran')->with('calonSiswa', $calonSiswa);
     }
@@ -144,7 +181,6 @@ class CalonSiswaController extends Controller
         $request->validate([
             'bukti_pembayaran' => 'required'
         ]);
-        // echo "<script>console.log('Debug Objects: " . $request->bookId . "' );</script>";
         $path = $request->file('bukti_pembayaran');
         $nama_path = time() . rand(1, 99) . '.' . $path->extension();
         $tujuan_upload = 'bukti_pembayaran';
@@ -153,12 +189,7 @@ class CalonSiswaController extends Controller
         $calonSiwa->bukti_pembayaran = $nama_path;
         $calonSiwa->status = "Pengecekan Bukti Pembayaran";
         $calonSiwa->update();
-        $calonSiswa = CalonSiswa::where('code_pendaftaran', 'LIKE', "%{$calonSiwa->code}%")->get();
-        // Alert::success('Success', 'Bukti Pembayaran Berhasil Diupload!');
-        return redirect()->back()->with('calonSiswa', $calonSiswa);
-        // $path = $request->file('bukti_pembayaran');
-        // echo "<script>console.log('Debug Objects: " . $path . "' );</script>";
-        // echo "<script>console.log('Debug Objects: " . $request->bukti_pembayaran . "' );</script>";
+        return redirect('/cekstatuspendaftaran');
     }
 
     /**

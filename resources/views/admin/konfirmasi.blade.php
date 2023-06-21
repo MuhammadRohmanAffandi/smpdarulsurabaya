@@ -13,7 +13,8 @@
                     <li><a href="{{url('allcalonsiswa')}}"><i class="icon-list-alt"></i><span>Calon Siswa</span> </a> </li>
                     <li><a href="{{url('alluser')}}"><i class="icon-user"></i><span>Users</span> </a> </li>
                     <li><a href="{{url('allsiswa')}}"><i class="icon-user"></i><span>Siswa</span> </a></li>
-                    <li><a href="{{url('konfirmasipembayaran')}}"><i class="icon-dollar"></i><span>Pembayaran SPPP</span> </a> </li>
+                    <li><a href="{{url('konfirmasipembayaran')}}"><i class="icon-dollar"></i><span>Pembayaran spp</span> </a> </li>
+                    <li><a href="{{url('spp')}}"><i class="icon-dollar"></i><span>daftar spp</span> </a> </li>
                 </ul>
             </div>
             <!-- /container -->
@@ -22,7 +23,8 @@
     </div>
 
     <div class="container">
-
+        <h2>Konfirmasi Pembayaran Dari <span style="color: cadetblue;">{{$spp[0]->nama}}</span></h2>
+        <p>*centang pada bulan yang ingin ditandai telah lunas</p>
         <div class="tab-pane" id="formcontrols">
             <form method="POST" id="edit-profile" class="form-horizontal" action="{{route('konfirmasi')}}">
                 @csrf
@@ -59,7 +61,7 @@
                 <fieldset>
                     <div class="form-actions">
                         <button type="submit" class="btn btn-primary">
-                            {{ __('Tambah') }}
+                            {{ __('Konfirmasi') }}
                         </button>
                         <a class="btn" href="{{route('konfirmasiPembayaranSpp')}}">Cancel</a>
                     </div> <!-- /form-actions -->

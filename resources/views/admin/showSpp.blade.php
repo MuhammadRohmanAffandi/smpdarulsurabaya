@@ -12,14 +12,14 @@
 </style>
 
 <body>
+
     @if(session()->has('message'))
-    <div class="alert alert-danger">
-        <b>Gagal Mengganti Status! </b>
+    <div class="alert alert-success alert-float">
         {{ session()->get('message') }}
     </div>
-    @elseif(session()->has('berhasil_dirubah'))
-    <div class="alert alert-success">
-        {{ session()->get('berhasil_dirubah') }}
+    @elseif(session()->has('error'))
+    <div class="alert alert-danger alert-float">
+        {{ session()->get('error') }}
     </div>
     @endif
     @include('layouts.admin.navbar')
@@ -28,11 +28,11 @@
             <div class="container">
                 <ul class="mainnav">
                     <li><a href="dashboard"><i class="icon-dashboard"></i><span>Dashboard</span> </a> </li>
-                    <li class="active"><a href=""><i class="icon-list-alt"></i><span>Calon Siswa</span> </a> </li>
+                    <li><a href="{{url('allcalonspp')}}"><i class="icon-list-alt"></i><span>Calon spp</span> </a> </li>
                     <li><a href="{{url('alluser')}}"><i class="icon-user"></i><span>Users</span> </a> </li>
-                    <li><a href="{{url('allsiswa')}}"><i class="icon-user"></i><span>Siswa</span> </a></li>
+                    <li><a href="{{url('allspp')}}"><i class="icon-user"></i><span>spp</span> </a></li>
                     <li><a href="{{url('konfirmasipembayaran')}}"><i class="icon-dollar"></i><span>Pembayaran spp</span> </a> </li>
-                    <li><a href="{{url('spp')}}"><i class="icon-dollar"></i><span>daftar spp</span> </a> </li>
+                    <li class="active"><a href="{{url('spp')}}"><i class="icon-dollar"></i><span>daftar spp</span> </a> </li>
                 </ul>
             </div>
             <!-- /container -->
@@ -44,52 +44,43 @@
         <table class="table" id="myTable">
             <thead>
                 <tr class="table-top">
+                    <th scope="col">Bulan</th>
+                    <th scope="col">Tahun</th>
                     <th scope="col">Nama</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Detail</th>
-                    <th scope="col">Ubah Status</th>
-                    <th scope="col">Bukti Pembayaran</th>
-                    <th scope="col">Tanggal Upload</th>
+                    <th scope="col">NISN</th>
+                    <th scope="col">nominal</th>
+                    <th scope="col">lunas</th>
+                    <th scope="col">action</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($calonSiswa as $calonSiswas)
+                @foreach($spp as $spps)
                 <tr>
-                    <td>{{$calonSiswas->nama}}</td>
-                    <td>{{$calonSiswas->status}}</td>
-                    <td><a href="{{ route('detail', $calonSiswas->id)}}" class="btn btn-primary">Lihat</a></td>
+                    <td>{{$spps->bulan}}</td>
+                    <td>{{$spps->tahun}}</td>
+                    <td>{{$spps->nama}}</td>
+                    <td>{{$spps->nisn}}</td>
+                    <td>{{$spps->nominal}}</td>
+                    <td>{{$spps->lunas}}</td>
                     <td>
-                        <a data-toggle="modal" data-id="{{$calonSiswas->id}}" title="Add this item" class="open-AddBookDialog btn btn-primary" href="#addBookDialog">Ubah</a>
+                        <a data-toggle="modal" data-id="{{$spps->id}}" title="Add this item" class="open-AddBookDialog btn btn-primary" href="#addBookDialog">Ubah Nominal</a>
                         <div class="modal hide" id="addBookDialog">
                             <div class="modal-header">
-                                <h3 class="modal-title">Ubah Status</h3>
+                                <h3 class="modal-title">Ubah Nominal</h3>
                                 <button class="close" data-dismiss="modal">×</button>
                             </div>
-                            <form id="subscribe-email-form" enctype="multipart/form-data" method="POST" action="{{ route('updateStatus')}}">
+                            <form id="subscribe-email-form" enctype="multipart/form-data" method="POST" action="{{ route('ubahNominal')}}">
                                 @csrf
                                 <div class="modal-body">
                                     <input type="hidden" name="bookId" id="bookId" value="" />
-                                    <select id="cars" name="status">
-                                        <option value="none" selected disabled hidden>Pilih Satu</option>
-                                        <option value="Menunggu Pembayaran">Menunggu Pembayaran</option>
-                                        <option value="Pengecekan Bukti Pembayaran">Pengecekan Bukti Pembayaran</option>
-                                        <option value="Bukti Pembayaran Gagal Diverifikasi">Bukti Pembayaran Gagal Diverifikasi</option>
-                                        <option value="Pendaftaran Selesai">Pendaftaran Selesai</option>
-                                    </select>
+                                    <input type="number" step="any" name="nominal">
                                 </div>
                                 <div class="modal-footer">
                                     <input type="submit" value="SUBMIT" class="btn btn-primary" />
                                 </div>
                             </form>
                         </div>
-
                     </td>
-                    @if($calonSiswas->bukti_pembayaran == NULL)
-                    <td>Tidak Ada Bukti Pembayaran</td>
-                    @else
-                    <td> <a class="btn btn-primary" href="{{ route('showBuktiPembayaran', $calonSiswas->bukti_pembayaran)}}" target="_blank">Lihat File</a></td>
-                    @endif
-                    <td>{{$calonSiswas->created_at}}</td>
                 </tr>
                 @endforeach
             </tbody>

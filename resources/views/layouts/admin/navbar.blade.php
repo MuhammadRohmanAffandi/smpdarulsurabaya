@@ -11,7 +11,9 @@
                     </li>
                     <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user"></i> {{Auth::user()->name}} <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="javascript:;">Profile</a></li>
+                            <li>
+                                <a>User Role: {{Auth::user()->role}}</a>
+                            </li>
                             <li>
                                 <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                     Logout

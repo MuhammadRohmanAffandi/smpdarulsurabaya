@@ -26,6 +26,20 @@ class PembayaranSppController extends Controller
         return view('pembayaranSpp', compact('spp'));
     }
 
+    public function ubahNominal(Request $request)
+    {
+        $spp = Spp::findOrFail($request->bookId);
+        $spp->nominal = $request->nominal;
+        $spp->save();
+        return redirect('spp')->with('message', 'nominal berhasil diganti');
+    }
+
+    public function showSpp()
+    {
+        $spp = DB::table('spps')->join('siswas', 'spps.id_siswa', '=', 'siswas.id')->select('spps.*', 'siswas.nama', 'siswas.nisn')->get();
+        return view('admin.showSpp', compact('spp'));
+    }
+
     public function uploadBuktiPembayaranSpp(Request $request)
     {
         $request->validate([
@@ -49,7 +63,7 @@ class PembayaranSppController extends Controller
         }
         $idUser = Auth::id();
         $idSiswa = Siswa::where('id_user', $idUser)->get();
-        $spp = Spp::where('id_siswa', $idSiswa[0]->id)->get();
+        $spp = Spp::where('id_siswa', $idSiswa[0]->id)->where('lunas', 1)->get();
         // echo $spp;
         return view('sppLunas', compact('spp'));
     }
@@ -58,7 +72,7 @@ class PembayaranSppController extends Controller
     {
         $bukti_pembayaran = DB::table('bukti_pembayarans')
             ->join('siswas', 'bukti_pembayarans.id_siswa', '=', 'siswas.id')
-            ->select('bukti_pembayarans.id', 'bukti_pembayarans.bukti_pembayaran', 'bukti_pembayarans.id_siswa', 'bukti_pembayarans.telah_dikonfirmasi', 'siswas.nama', 'siswas.nisn')->get();
+            ->select('bukti_pembayarans.id', 'bukti_pembayarans.bukti_pembayaran', 'bukti_pembayarans.id_siswa', 'bukti_pembayarans.telah_dikonfirmasi', 'bukti_pembayarans.created_at', 'siswas.nama', 'siswas.nisn')->get();
         return view('admin.konfirmasiPembayaran', compact('bukti_pembayaran'));
     }
 
@@ -69,7 +83,8 @@ class PembayaranSppController extends Controller
 
     public function konfirmasi(string $id)
     {
-        $spp = Spp::where('id_siswa', $id)->where('lunas', 0)->get();
+        $spp = DB::table('spps')->join('siswas', 'spps.id_siswa', '=', 'siswas.id')->select('spps.*', 'siswas.nama')->where('id_siswa', $id)->where('lunas', 0)->get();
+        // $spp = Spp::where('id_siswa', $id)->where('lunas', 0)->get();
         return view('admin.konfirmasi')->with('spp', $spp);
     }
 

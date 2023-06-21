@@ -36,10 +36,41 @@
    </div>
    <!-- end loader -->
    <!-- header -->
-   <div class="header_form">
+   <div class="header">
       <div class="container">
          <div class="row d_flex">
-
+            <div class=" col-md-2 col-sm-3 col logo_section">
+               <div class="full">
+                  <div class="center-desk">
+                     <div class="logo">
+                        <a href="index.html"><img src="images/logo.png" alt="#" /></a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="col-md-8 col-sm-12">
+               <nav class="navigation navbar navbar-expand-md navbar-dark ">
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+                     <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarsExample04">
+                     <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                           <a class="nav-link" href="/">Beranda</a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="about">Tentang</a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="contact">Hubungi Kami</a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="cekstatuspendaftaran">cek status</a>
+                        </li>
+                     </ul>
+                  </div>
+               </nav>
+            </div>
          </div>
       </div>
    </div>
@@ -103,35 +134,35 @@
                            </div>
                            @endif
                            <label>Nama Lengkap</label>
-                           <input type="text" class="form-control" id="namaLengkap" placeholder="Masukan Nama Lengkap" name="nama">
+                           <input type="text" class="form-control" id="namaLengkap" placeholder="Masukan Nama Lengkap" name="nama" value="{{ old('nama') }}">
                         </div>
                         <div class="form-group">
                            <label>NISN</label>
-                           <input type="text" class="form-control" id="nisn" placeholder="Masukan NISN" name="nisn">
+                           <input type="text" class="form-control" id="nisn" placeholder="Masukan NISN" name="nisn" value="{{ old('nisn') }}">
                         </div>
                         <div class="form-group">
                            <label>NIK</label>
-                           <input type="text" class="form-control" id="nik" placeholder="Masukan NIK" name="nik">
+                           <input type="text" class="form-control" id="nik" placeholder="Masukan NIK" name="nik" value="{{ old('nik') }}">
                         </div>
                         <div class="form-group">
                            <label>Tempat Lahir</label>
-                           <input type="text" class="form-control" id="tempatLahir" placeholder="Masukan Tempat Lahir" name="tempat_lahir">
+                           <input type="text" class="form-control" id="tempatLahir" placeholder="Masukan Tempat Lahir" name="tempat_lahir" value="{{ old('tempat_lahir') }}">
                         </div>
                         <div class="form-group">
                            <label>Tanggal Lahir</label>
-                           <input type="date" class="form-control" id="tanggalLahir" placeholder="mm/dd/yy" name="tanggal_lahir">
+                           <input type="date" class="form-control" id="tanggalLahir" placeholder="mm/dd/yy" name="tanggal_lahir" value="{{ old('tanggal_lahir') }}">
                         </div>
                         <div class="form-group">
                            <label>Agama</label>
-                           <input type="text" class="form-control" id="agama" placeholder="Masukan Agama" name="agama">
+                           <input type="text" class="form-control" id="agama" placeholder="Masukan Agama" name="agama" value="{{ old('agama') }}">
                         </div>
                         <div class="form-group">
                            <label>Pas Foto</label>
-                           <input type="file" class="form-control" id="pasFoto" name="file_path_pas_foto">
+                           <input type="file" class="form-control" id="pasFoto" name="file_path_pas_foto" value="{{ old('file_path_pas_foto') }}">
                         </div>
                         <div class="form-group">
                            <label>KK</label>
-                           <input type="file" class="form-control" id="kk" name="file_path_kk">
+                           <input type="file" class="form-control" id="kk" name="file_path_kk" value="{{ old('file_path_kk') }}">
                         </div>
                      </div>
                      <div class="mt-3">
@@ -145,27 +176,27 @@
                      <div class="mt-3">
                         <div class="form-group">
                            <label>RT</label>
-                           <input type="text" class="form-control" id="rt" placeholder="Masukan RT" name="rt">
+                           <input type="text" class="form-control" id="rt" placeholder="Masukan RT" name="rt" value="{{ old('rt') }}">
                         </div>
                         <div class="form-group">
                            <label>RW</label>
-                           <input type="text" class="form-control" id="rw" placeholder="Masukan RW" name="rw">
+                           <input type="text" class="form-control" id="rw" placeholder="Masukan RW" name="rw" value="{{ old('rw') }}">
                         </div>
                         <div class="form-group">
                            <label>Desa</label>
-                           <input type="text" class="form-control" id="desa" placeholder="Masukan Desa" name="desa">
+                           <input type="text" class="form-control" id="desa" placeholder="Masukan Desa" name="desa" value="{{ old('desa') }}">
                         </div>
                         <div class="form-group">
                            <label>Kecamatan</label>
-                           <input type="text" class="form-control" id="kecamatan" placeholder="Masukan Kecamatan" name="kecamatan">
+                           <input type="text" class="form-control" id="kecamatan" placeholder="Masukan Kecamatan" name="kecamatan" value="{{ old('kecamatan') }}">
                         </div>
                         <div class="form-group">
                            <label>Kabupaten</label>
-                           <input type="text" class="form-control" id="kabupaten" placeholder="Masukan Kabupaten" name="kabupaten">
+                           <input type="text" class="form-control" id="kabupaten" placeholder="Masukan Kabupaten" name="kabupaten" value="{{ old('kabupaten') }}">
                         </div>
                         <div class="form-group">
                            <label>No. Telp/HP</label>
-                           <input type="text" class="form-control" id="noTelp" placeholder="Masukan No. Telp/HP" name="no_telp">
+                           <input type="text" class="form-control" id="noTelp" placeholder="Masukan No. Telp/HP" name="no_telp" value="{{ old('no_telp') }}">
                         </div>
                      </div>
                      <div class="mt-3">
@@ -180,23 +211,24 @@
                      <div class="mt-3">
                         <div class="form-group">
                            <label>Nama Sekolah</label>
-                           <input type="text" class="form-control" id="namaSekolah" placeholder="Masukan Nama Sekolah" name="nama_sekolah">
+                           <input type="text" class="form-control" id="namaSekolah" placeholder="Masukan Nama Sekolah" name="nama_sekolah" value="{{ old('nama_sekolah') }}">
                         </div>
                         <div class="form-group">
                            <label>Ijasah</label>
-                           <input type="file" class="form-control" id="ijasah" name="file_path_ijasah">
+                           <input type="file" class="form-control" id="ijasah" name="file_path_ijasah" value="{{ old('file_path_ijasah') }}">
                         </div>
                         <div class="form-group">
                            <label>Tahun Lulus</label>
-                           <input type="text" class="form-control" id="tahunLulus" placeholder="Masukan Tahun Lulus" name="tahun_lulus">
+                           <input type="text" class="form-control" id="tahunLulus" placeholder="Masukan Tahun Lulus" name="tahun_lulus" value="{{ old('tahun_lulus') }}">
                         </div>
                      </div>
                      <div class="mt-3">
                         <button class="button btn-navigate-form-step" type="button" step_number="2">Prev</button>
                      </div>
+                     <br>
+                     <button class="button submit-btn" type="submit">Upload</button>
                   </section>
                   <br>
-                  <button class="button submit-btn" type="submit">Upload</button>
                </div>
             </div>
          </div>
@@ -210,48 +242,31 @@
             <div class="row">
                <div class="col-lg-3 col-md-6 col-sm-6">
                   <div class="infoma text_align_left">
-                     <h3>Choose.</h3>
+                     <h3>Lokasi</h3>
                      <ul class="commodo">
-                        <li>Commodo</li>
-                        <li>consequat. Duis a</li>
-                        <li>ute irure dolor</li>
-                        <li>in reprehenderit </li>
-                        <li>in voluptate </li>
+                        <a href="https://goo.gl/maps/55nnaBEA5ZUBnrHh8">
+                           <div id="map" style="width: 200px; height: 200px;"><img src="images/map.png" alt="#" /></div>
+                        </a>
                      </ul>
                   </div>
                </div>
                <div class="col-lg-4 col-md-6 col-sm-6">
                   <div class="infoma">
-                     <h3>Get Support.</h3>
+                     <h3>Kontak Kami</h3>
                      <ul class="conta">
-                        <li><i class="fa fa-map-marker" aria-hidden="true"></i>Address : Loram Ipusm
+                        <li><i class="fa fa-map-marker" aria-hidden="true"></i>Address : Jl. Raya Manukan Kulon No.98-100, RW.10, Manukan Kulon, Kec. Tandes, Surabaya, Jawa Timur
                         </li>
-                        <li><i class="fa fa-phone" aria-hidden="true"></i>Call : +01 1234567890</li>
-                        <li> <i class="fa fa-envelope" aria-hidden="true"></i><a href="Javascript:void(0)"> Email : demo@gmail.com</a></li>
+                        <li><i class="fa fa-phone" aria-hidden="true"></i>Call : (031) 7417749</li>
+                        <li> <i class="fa fa-envelope" aria-hidden="true"></i><a href="Javascript:void(0)"> Email : smpdu.muncar@gmail.com</a></li>
                      </ul>
                   </div>
                </div>
                <div class="col-lg-3 col-md-6 col-sm-6">
                   <div class="infoma">
-                     <h3>Company.</h3>
+                     <h3>Service.</h3>
                      <ul class="menu_footer">
-                        <li><a href="index.html">Beranda</a></li>
-                        <li><a href="about.html">Tentang </a></li>
-                        <li><a href="domain.html">Domain</a></li>
-                        <li><a href="hosting.html">Hosting</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                     </ul>
-                  </div>
-               </div>
-               <div class="col-lg-2 col-md-6 col-sm-6">
-                  <div class="infoma text_align_left">
-                     <h3>Services.</h3>
-                     <ul class="commodo">
-                        <li>Commodo</li>
-                        <li>consequat. Duis a</li>
-                        <li>ute irure dolor</li>
-                        <li>in reprehenderit </li>
-                        <li>in voluptate </li>
+                        <li><a href="{{url('formpendaftaran')}}">Pendaftaran Peserta Didik Baru</a></li>
+                        <li><a href="{{url('pembayaranspp')}}">Pembayaran SPP</a></li>
                      </ul>
                   </div>
                </div>

@@ -22,6 +22,9 @@ class UserController extends Controller
         $request->validate([
             'role' => 'required'
         ]);
+        if (Auth::user()->role != "sadmin") {
+            return redirect()->back()->with('message', 'Anda Bukan Super Admin!');
+        }
         if (Auth::id() == $request->bookId) {
             return redirect()->back()->with('message', 'Anda Tidak Dapat Merubah Role Anda Sendiri!');
         }

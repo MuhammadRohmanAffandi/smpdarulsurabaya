@@ -24,7 +24,7 @@
 
     <div class="container">
 
-        <h2 class="text-center">Form Tambah Siswa</h2>
+        <h2 class="text-center">Form Edit Siswa</h2>
         @if(session()->has('message'))
         <div class="alert alert-success">
             {{ session()->get('message') }}
@@ -33,7 +33,7 @@
         <br>
 
         <div class="tab-pane" id="formcontrols">
-            <form method="POST" id="edit-profile" class="form-horizontal" action="{{ route('tambahSiswa') }}">
+            <form method="POST" id="edit-profile" class="form-horizontal" action="{{ route('updateSiswa') }}">
                 @csrf
 
                 <fieldset>
@@ -41,9 +41,9 @@
 
                     <div class="control-group">
                         <label for="name" class="control-label">{{ __('Name') }}</label>
-
-                        <div class="controls">
-                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                        <input type="hidden" name="id" value="{{ $siswa->id }}">
+                        <div class=" controls">
+                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $siswa->nama }}" required autocomplete="name" autofocus>
                             @error('name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -57,7 +57,7 @@
                         <label for="nisn" class="control-label">{{ __('NISN') }}</label>
 
                         <div class="controls">
-                            <input id="nisn" type="text" class="form-control @error('nisn') is-invalid @enderror" name="nisn" value="{{ old('nisn') }}" required autocomplete="nisn">
+                            <input id="nisn" type="text" class="form-control @error('nisn') is-invalid @enderror" name="nisn" value="{{ $siswa->nisn }}" required autocomplete="nisn">
 
                             @error('nisn')
                             <span class="invalid-feedback" role="alert">
@@ -72,7 +72,7 @@
                         <label for="tahun_masuk" class="control-label">{{ __('Tahun masuk') }}</label>
 
                         <div class="controls">
-                            <input id="tahun_masuk" type="text" class="form-control @error('tahun_masuk') is-invalid @enderror" name="tahun_masuk" value="{{ old('tahun_masuk') }}" required autocomplete="tahun_masuk">
+                            <input id="tahun_masuk" type="text" class="form-control @error('tahun_masuk') is-invalid @enderror" name="tahun_masuk" value="{{ $siswa->tahun_masuk }}" required autocomplete="tahun_masuk">
 
                             @error('tahun_masuk')
                             <span class="invalid-feedback" role="alert">
@@ -87,7 +87,7 @@
                         <button type="submit" class="btn btn-primary">
                             {{ __('Tambah') }}
                         </button>
-                        <button class="btn">Cancel</button>
+                        <a class="btn" href="{{url('allsiswa')}}">Cancel</a>
                     </div> <!-- /form-actions -->
                 </fieldset>
             </form>

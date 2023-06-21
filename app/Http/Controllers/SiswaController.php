@@ -28,6 +28,30 @@ class SiswaController extends Controller
 
         return redirect()->back()->with('message', 'Siswa Berhasil Ditambahkan!');
     }
+
+    public function hapusSiswa(Request $request)
+    {
+        $siswa = Siswa::find($request->bookId);
+        $siswa->delete();
+        return redirect('allsiswa')->with('message', 'Berhasi Dihapus');
+    }
+
+    public function updateSiswa(Request $request)
+    {
+        $siswa = Siswa::findOrFail($request->id);
+        $siswa->nama = $request->name;
+        $siswa->nisn = $request->nisn;
+        $siswa->tahun_masuk = $request->tahun_masuk;
+        $siswa->save();
+        return redirect('allsiswa')->with('success', 'Siswa Berhasil Diupdate!');
+    }
+
+    public function editSiswa($id)
+    {
+        $siswa = Siswa::findOrFail($id);
+        return view('admin.edit', compact('siswa'));
+    }
+
     public function tambahEmailSiswa(Request $request)
     {
 

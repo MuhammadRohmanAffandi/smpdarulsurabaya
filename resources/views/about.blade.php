@@ -91,14 +91,27 @@
                      <h2>VISI</h2>
                   </div>
                   <p>
-                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore labore mollitia laboriosam. Sint in iure dignissimos aspernatur veritatis numquam, vitae quasi? Excepturi, aperiam laboriosam. Ad sunt quaerat maiores magnam sapiente!
+                     Unggul dalam prestasi, dengan Iman dan Taqwa terhadap Allah SWT,Peduli sosial dan lingkungan serta berwawasan global
                   </p>
                   <div class="title text_align_center">
                      <h2>MISI</h2>
                   </div>
-                  <p>
-                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore labore mollitia laboriosam. Sint in iure dignissimos aspernatur veritatis numquam, vitae quasi? Excepturi, aperiam laboriosam. Ad sunt quaerat maiores magnam sapiente!
-                  </p>
+                  <ul class="text_align_left" style="padding-left: 8rem;padding-right:6rem">
+                     <li>1. Menyusun Kurikulum 2013 sesuai dengan permendikbud yang berlaku.</li>
+                     <li>2. Menyusun perangkat pembelajaran dengan penguatan pendidikan karakter,dan berbasis literasi</li>
+                     <li>3. Melaksanakan Proses Pembelajaran</li>
+                     <li>4. Melaksanakan proses penilaian proses pembelajaran</li>
+                     <li>5. Melaksanakan Aqidah yang kuat dengan berpedoman pada Al Quran,Alhadis Ijma Ulama dan Qiyas</li>
+                     <li>6. Melaksanakan pembiasaan 5 S(senyum,sapa,salam,sopan,santun)</li>
+                     <li>7. Melaksanakan kegiatan-kegiatan yang berbasis agama islam</li>
+                     <li>8. Mengadakan Bakti sosial</li>
+                     <li>9. Membantu pembiayaan pendidikan bagi masyarakat uyang kurang mampu</li>
+                     <li>10. Mewujudkan sekolah Adiwiyata yang mendukung upaya pelesarian fungsi lingkungan,mencegah pencemaran dan kerusakan lingkungan hidup dan peningkatan kualitas lingkungan hidup ,melaksanakan penghijauan secara minimalis dalam lahan yang sempit</li>
+                     <li>11. Melaksanakan pengelolaan lingkungan sosial</li>
+                     <li>12. menyediakan sistem informasi manajemen sekola berbasis teknologi</li>
+                     <li>13. Melaksanakan pembelajaran berbasis teknologi</li>
+                  </ul>
+                  <br>
                   <a class="read_more" href="Javascript:void(0)">Read More</a>
                </div>
             </div>
@@ -113,48 +126,31 @@
             <div class="row">
                <div class="col-lg-3 col-md-6 col-sm-6">
                   <div class="infoma text_align_left">
-                     <h3>Choose.</h3>
+                     <h3>Lokasi</h3>
                      <ul class="commodo">
-                        <li>Commodo</li>
-                        <li>consequat. Duis a</li>
-                        <li>ute irure dolor</li>
-                        <li>in reprehenderit </li>
-                        <li>in voluptate </li>
+                        <a href="https://goo.gl/maps/55nnaBEA5ZUBnrHh8">
+                           <div id="map" style="width: 200px; height: 200px;"><img src="images/map.png" alt="#" /></div>
+                        </a>
                      </ul>
                   </div>
                </div>
                <div class="col-lg-4 col-md-6 col-sm-6">
                   <div class="infoma">
-                     <h3>Get Support.</h3>
+                     <h3>Kontak Kami</h3>
                      <ul class="conta">
-                        <li><i class="fa fa-map-marker" aria-hidden="true"></i>Address : Loram Ipusm
+                        <li><i class="fa fa-map-marker" aria-hidden="true"></i>Address : Jl. Raya Manukan Kulon No.98-100, RW.10, Manukan Kulon, Kec. Tandes, Surabaya, Jawa Timur
                         </li>
-                        <li><i class="fa fa-phone" aria-hidden="true"></i>Call : +01 1234567890</li>
-                        <li> <i class="fa fa-envelope" aria-hidden="true"></i><a href="Javascript:void(0)"> Email : demo@gmail.com</a></li>
+                        <li><i class="fa fa-phone" aria-hidden="true"></i>Call : (031) 7417749</li>
+                        <li> <i class="fa fa-envelope" aria-hidden="true"></i><a href="Javascript:void(0)"> Email : smpdu.muncar@gmail.com</a></li>
                      </ul>
                   </div>
                </div>
                <div class="col-lg-3 col-md-6 col-sm-6">
                   <div class="infoma">
-                     <h3>Company.</h3>
+                     <h3>Service.</h3>
                      <ul class="menu_footer">
-                        <li><a href="index.html">Beranda</a></li>
-                        <li><a href="about.html">Tentang </a></li>
-                        <li><a href="domain.html">Domain</a></li>
-                        <li><a href="hosting.html">Hosting</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                     </ul>
-                  </div>
-               </div>
-               <div class="col-lg-2 col-md-6 col-sm-6">
-                  <div class="infoma text_align_left">
-                     <h3>Services.</h3>
-                     <ul class="commodo">
-                        <li>Commodo</li>
-                        <li>consequat. Duis a</li>
-                        <li>ute irure dolor</li>
-                        <li>in reprehenderit </li>
-                        <li>in voluptate </li>
+                        <li><a href="{{url('formpendaftaran')}}">Pendaftaran Peserta Didik Baru</a></li>
+                        <li><a href="{{url('pembayaranspp')}}">Pembayaran SPP</a></li>
                      </ul>
                   </div>
                </div>

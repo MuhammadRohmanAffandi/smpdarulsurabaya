@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
     <!-- style css -->
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
+
+    <link href="{{asset('admin/css/bootstrap-responsive.min.css')}}" rel="stylesheet">
 </head>
 <!-- body -->
 
@@ -143,7 +145,7 @@
                         <input type="file" class="form-control" id="bukti_pembayaran" name="bukti_pembayaran">
                     </div>
                     <div class="modal-footer">
-                        <input type="submit" value="SUBMIT" class="btn-primary" />
+                        <input type="submit" value="SUBMIT" class="btn btn-primary" />
                     </div>
                 </form>
             </div>
@@ -178,48 +180,31 @@
                 <div class="row">
                     <div class="col-lg-3 col-md-6 col-sm-6">
                         <div class="infoma text_align_left">
-                            <h3>Choose.</h3>
+                            <h3>Lokasi</h3>
                             <ul class="commodo">
-                                <li>Commodo</li>
-                                <li>consequat. Duis a</li>
-                                <li>ute irure dolor</li>
-                                <li>in reprehenderit </li>
-                                <li>in voluptate </li>
+                                <a href="https://goo.gl/maps/55nnaBEA5ZUBnrHh8">
+                                    <div id="map" style="width: 200px; height: 200px;"><img src="images/map.png" alt="#" /></div>
+                                </a>
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="infoma">
-                            <h3>Get Support.</h3>
+                            <h3>Kontak Kami</h3>
                             <ul class="conta">
-                                <li><i class="fa fa-map-marker" aria-hidden="true"></i>Address : Loram Ipusm
+                                <li><i class="fa fa-map-marker" aria-hidden="true"></i>Address : Jl. Raya Manukan Kulon No.98-100, RW.10, Manukan Kulon, Kec. Tandes, Surabaya, Jawa Timur
                                 </li>
-                                <li><i class="fa fa-phone" aria-hidden="true"></i>Call : +01 1234567890</li>
-                                <li> <i class="fa fa-envelope" aria-hidden="true"></i><a href="Javascript:void(0)"> Email : demo@gmail.com</a></li>
+                                <li><i class="fa fa-phone" aria-hidden="true"></i>Call : (031) 7417749</li>
+                                <li> <i class="fa fa-envelope" aria-hidden="true"></i><a href="Javascript:void(0)"> Email : smpdu.muncar@gmail.com</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6 col-sm-6">
                         <div class="infoma">
-                            <h3>Company.</h3>
+                            <h3>Service.</h3>
                             <ul class="menu_footer">
-                                <li><a href="index.html">Beranda</a></li>
-                                <li><a href="about.html">Tentang </a></li>
-                                <li><a href="domain.html">Domain</a></li>
-                                <li><a href="hosting.html">Hosting</a></li>
-                                <li><a href="contact.html">Contact</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-6 col-sm-6">
-                        <div class="infoma text_align_left">
-                            <h3>Services.</h3>
-                            <ul class="commodo">
-                                <li>Commodo</li>
-                                <li>consequat. Duis a</li>
-                                <li>ute irure dolor</li>
-                                <li>in reprehenderit </li>
-                                <li>in voluptate </li>
+                                <li><a href="{{url('formpendaftaran')}}">Pendaftaran Peserta Didik Baru</a></li>
+                                <li><a href="{{url('pembayaranspp')}}">Pembayaran SPP</a></li>
                             </ul>
                         </div>
                     </div>

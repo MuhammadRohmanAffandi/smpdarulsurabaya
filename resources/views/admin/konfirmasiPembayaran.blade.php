@@ -35,9 +35,10 @@
                 <ul class="mainnav">
                     <li><a href="dashboard"><i class="icon-dashboard"></i><span>Dashboard</span> </a> </li>
                     <li><a href="{{url('allcalonsiswa')}}"><i class="icon-list-alt"></i><span>Calon Siswa</span> </a> </li>
-                    <li><a href="{{url('allbukti_pembayaran')}}"><i class="icon-user"></i><span>Users</span> </a> </li>
+                    <li><a href="{{url('alluser')}}"><i class="icon-user"></i><span>Users</span> </a> </li>
                     <li><a href="{{url('allsiswa')}}"><i class="icon-user"></i><span>Siswa</span> </a></li>
-                    <li class="active"><a href="{{url('konfirmasipembayaran')}}"><i class="icon-dollar"></i><span>Pembayaran SPPP</span> </a> </li>
+                    <li class="active"><a href="{{url('konfirmasipembayaran')}}"><i class="icon-dollar"></i><span>Pembayaran spp</span> </a> </li>
+                    <li><a href="{{url('spp')}}"><i class="icon-dollar"></i><span>Daftar SPP</span> </a> </li>
                 </ul>
             </div>
             <!-- /container -->
@@ -63,6 +64,7 @@
                     <th scope="col">Bukti Pembayaran</th>
                     <th scope="col">Status</th>
                     <th scope="col">Hapus</th>
+                    <th scope="col">Waktu Diunggah</th>
                 </tr>
             </thead>
             <tbody>
@@ -77,11 +79,12 @@
                     </td>
                     <td>
                         @if($bukti_pembayarans->telah_dikonfirmasi == 0)
-                        <b>Belum Dikonfirmasi</b>
+                        <b>Bukti Pembayaran Belum Dikonfirmasi</b>
                         @else
-                        <b>Telah Dikonfirmasi</b>
+                        <b>Bukti Pembayaran Telah Dikonfirmasi</b>
                         @endif
                         <br>
+                        <a class="btn btn-warning" href="{{ route('konfirmasiGet', $bukti_pembayarans->id_siswa)}}">Konfirmasi Pembayaran</a>
                         <a data-toggle="modal" data-id="{{$bukti_pembayarans->id}}" title="Add this item" class="open-AddBookDialog btn btn-primary" href="#addBookDialog">Ubah Status</a>
                         <div class="modal hide" id="addBookDialog">
                             <div class="modal-header">
@@ -99,11 +102,10 @@
                                     </select>
                                 </div>
                                 <div class="modal-footer">
-                                    <input type="submit" value="SUBMIT" class="btn-primary" />
+                                    <input type="submit" value="SUBMIT" class="btn btn-primary" />
                                 </div>
                             </form>
                         </div>
-                        <a class="btn btn-warning" href="{{ route('konfirmasiGet', $bukti_pembayarans->id_siswa)}}">Konfirmasi Pembayaran</a>
 
                     </td>
                     <td>
@@ -124,6 +126,7 @@
                             </form>
                         </div>
                     </td>
+                    <td>{{$bukti_pembayarans->created_at}}</td>
                 </tr>
 
                 @endforeach

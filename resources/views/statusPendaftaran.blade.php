@@ -45,10 +45,41 @@ $json_output = json_decode(Session::get('calonSiswa'));
    </div>
    <!-- end loader -->
    <!-- header -->
-   <div class="header_form">
+   <div class="header">
       <div class="container">
          <div class="row d_flex">
-
+            <div class=" col-md-2 col-sm-3 col logo_section">
+               <div class="full">
+                  <div class="center-desk">
+                     <div class="logo">
+                        <a href="index.html"><img src="images/logo.png" alt="#" /></a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="col-md-8 col-sm-12">
+               <nav class="navigation navbar navbar-expand-md navbar-dark ">
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+                     <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarsExample04">
+                     <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                           <a class="nav-link" href="/">Beranda</a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="about">Tentang</a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="contact">Hubungi Kami</a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="cekstatuspendaftaran">cek status</a>
+                        </li>
+                     </ul>
+                  </div>
+               </nav>
+            </div>
          </div>
       </div>
    </div>
@@ -86,7 +117,7 @@ $json_output = json_decode(Session::get('calonSiswa'));
                   </tr>
                   <tr>
                      <td>Nominal</td>
-                     <td class="bold">: Rp. 2.231.343</td>
+                     <td class="bold">: Rp. 2.100.000,00</td>
                   </tr>
                </tbody>
             </table>
@@ -107,7 +138,7 @@ $json_output = json_decode(Session::get('calonSiswa'));
                      <input type="file" class="form-control" id="bukti_pembayaran" name="bukti_pembayaran">
                   </div>
                   <div class="modal-footer">
-                     <input type="submit" value="SUBMIT" class="btn-primary" />
+                     <input type="submit" value="SUBMIT" class="btn btn-primary" />
                   </div>
                </form>
             </div>
@@ -196,48 +227,31 @@ $json_output = json_decode(Session::get('calonSiswa'));
             <div class="row">
                <div class="col-lg-3 col-md-6 col-sm-6">
                   <div class="infoma text_align_left">
-                     <h3>Choose.</h3>
+                     <h3>Lokasi</h3>
                      <ul class="commodo">
-                        <li>Commodo</li>
-                        <li>consequat. Duis a</li>
-                        <li>ute irure dolor</li>
-                        <li>in reprehenderit </li>
-                        <li>in voluptate </li>
+                        <a href="https://goo.gl/maps/55nnaBEA5ZUBnrHh8">
+                           <div id="map" style="width: 200px; height: 200px;"><img src="images/map.png" alt="#" /></div>
+                        </a>
                      </ul>
                   </div>
                </div>
                <div class="col-lg-4 col-md-6 col-sm-6">
                   <div class="infoma">
-                     <h3>Get Support.</h3>
+                     <h3>Kontak Kami</h3>
                      <ul class="conta">
-                        <li><i class="fa fa-map-marker" aria-hidden="true"></i>Address : Loram Ipusm
+                        <li><i class="fa fa-map-marker" aria-hidden="true"></i>Address : Jl. Raya Manukan Kulon No.98-100, RW.10, Manukan Kulon, Kec. Tandes, Surabaya, Jawa Timur
                         </li>
-                        <li><i class="fa fa-phone" aria-hidden="true"></i>Call : +01 1234567890</li>
-                        <li> <i class="fa fa-envelope" aria-hidden="true"></i><a href="Javascript:void(0)"> Email : demo@gmail.com</a></li>
+                        <li><i class="fa fa-phone" aria-hidden="true"></i>Call : (031) 7417749</li>
+                        <li> <i class="fa fa-envelope" aria-hidden="true"></i><a href="Javascript:void(0)"> Email : smpdu.muncar@gmail.com</a></li>
                      </ul>
                   </div>
                </div>
                <div class="col-lg-3 col-md-6 col-sm-6">
                   <div class="infoma">
-                     <h3>Company.</h3>
+                     <h3>Service.</h3>
                      <ul class="menu_footer">
-                        <li><a href="index.html">Beranda</a></li>
-                        <li><a href="about.html">Tentang </a></li>
-                        <li><a href="domain.html">Domain</a></li>
-                        <li><a href="hosting.html">Hosting</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                     </ul>
-                  </div>
-               </div>
-               <div class="col-lg-2 col-md-6 col-sm-6">
-                  <div class="infoma text_align_left">
-                     <h3>Services.</h3>
-                     <ul class="commodo">
-                        <li>Commodo</li>
-                        <li>consequat. Duis a</li>
-                        <li>ute irure dolor</li>
-                        <li>in reprehenderit </li>
-                        <li>in voluptate </li>
+                        <li><a href="{{url('formpendaftaran')}}">Pendaftaran Peserta Didik Baru</a></li>
+                        <li><a href="{{url('pembayaranspp')}}">Pembayaran SPP</a></li>
                      </ul>
                   </div>
                </div>

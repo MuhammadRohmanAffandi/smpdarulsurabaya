@@ -10,6 +10,14 @@
     <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
     <!-- style css -->
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+    <style>
+        #myPanzoom {
+            max-width: 600px;
+            height: 400px;
+            background: #eee;
+        }
+    </style>
 </head>
 <!-- body -->
 
@@ -61,7 +69,7 @@
     <div class="form-step margin-core-status">
         <div class="content-status-pendaftaran">
             <div class="">
-                <table class="table">
+                <table class="table" id="myTable">
                     <thead>
                         <tr class="table-top">
                             <th scope="col">No</th>
@@ -117,14 +125,14 @@
     <br>
     <br>
     <div class="titlepage text_align_center">
-        <h2>Daftar Tagihan <span class="blue_light">Spp<span></h2>
+        <h2>Daftar Tagihan <span class="blue_light">Spp Lunas<span></h2>
     </div>
     <div class="form-step">
         <div class="container">
             <div class="row ">
                 <div class="col-md-12">
                     <div class="text_align_center">
-                        <h2>Tidak Ada Daftar Tagihan</h2>
+                        <h2>Tidak Ada Daftar Tagihan Lunas</h2>
                         <br>
                         <a class="button" href="/">Kembali Keberanda</a>
                     </div>
@@ -141,48 +149,54 @@
                 <div class="row">
                     <div class="col-lg-3 col-md-6 col-sm-6">
                         <div class="infoma text_align_left">
-                            <h3>Choose.</h3>
+                            <h3>Lokasi</h3>
                             <ul class="commodo">
-                                <li>Commodo</li>
-                                <li>consequat. Duis a</li>
-                                <li>ute irure dolor</li>
-                                <li>in reprehenderit </li>
-                                <li>in voluptate </li>
+                                <div id="map" style="width: 200px; height: 200px;"></div>
+
+                                <script src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&callback=initMap" async defer></script>
+
+                                <script>
+                                    function initMap() {
+                                        // Inisialisasi peta dengan koordinat dan opsi yang sesuai
+                                        var map = new google.maps.Map(document.getElementById('map'), {
+                                            center: {
+                                                lat: -7.255625605978664,
+                                                lng: 112.66487353761738
+                                            },
+                                            zoom: 12
+                                        });
+
+                                        // Tambahkan marker ke peta
+                                        var marker = new google.maps.Marker({
+                                            position: {
+                                                lat: -7.255625605978664,
+                                                lng: 112.66487353761738
+                                            },
+                                            map: map,
+                                            title: 'Lokasi'
+                                        });
+                                    }
+                                </script>
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="infoma">
-                            <h3>Get Support.</h3>
+                            <h3>Kontak Kami</h3>
                             <ul class="conta">
-                                <li><i class="fa fa-map-marker" aria-hidden="true"></i>Address : Loram Ipusm
+                                <li><i class="fa fa-map-marker" aria-hidden="true"></i>Address : Jl. Raya Manukan Kulon No.98-100, RW.10, Manukan Kulon, Kec. Tandes, Surabaya, Jawa Timur
                                 </li>
-                                <li><i class="fa fa-phone" aria-hidden="true"></i>Call : +01 1234567890</li>
-                                <li> <i class="fa fa-envelope" aria-hidden="true"></i><a href="Javascript:void(0)"> Email : demo@gmail.com</a></li>
+                                <li><i class="fa fa-phone" aria-hidden="true"></i>Call : (031) 7417749</li>
+                                <li> <i class="fa fa-envelope" aria-hidden="true"></i><a href="Javascript:void(0)"> Email : smpdu.muncar@gmail.com</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6 col-sm-6">
                         <div class="infoma">
-                            <h3>Company.</h3>
+                            <h3>Service.</h3>
                             <ul class="menu_footer">
-                                <li><a href="index.html">Beranda</a></li>
-                                <li><a href="about.html">Tentang </a></li>
-                                <li><a href="domain.html">Domain</a></li>
-                                <li><a href="hosting.html">Hosting</a></li>
-                                <li><a href="contact.html">Contact</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-6 col-sm-6">
-                        <div class="infoma text_align_left">
-                            <h3>Services.</h3>
-                            <ul class="commodo">
-                                <li>Commodo</li>
-                                <li>consequat. Duis a</li>
-                                <li>ute irure dolor</li>
-                                <li>in reprehenderit </li>
-                                <li>in voluptate </li>
+                                <li><a href="{{url('formpendaftaran')}}">Pendaftaran Peserta Didik Baru</a></li>
+                                <li><a href="{{url('pembayaranspp')}}">Pembayaran SPP</a></li>
                             </ul>
                         </div>
                     </div>
@@ -206,6 +220,12 @@
     <!-- sidebar -->
     <script src="{{asset('js/custom.js')}}"></script>
     <script src="{{asset('js/form.js')}}"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#myTable').DataTable();
+        });
+    </script>
 </body>
 
 </html>

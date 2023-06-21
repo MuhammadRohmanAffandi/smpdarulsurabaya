@@ -69,18 +69,21 @@ Route::get('/tambahsiswa', function () {
 })->middleware('checkRole:admin,sadmin');
 Route::post('/tambahSiswa', [SiswaController::class, 'tambahSiswa'])->name('tambahSiswa')->middleware('checkRole:admin,sadmin');
 Route::post('/tambahemailsiswa', [SiswaController::class, 'tambahEmailSiswa'])->name('tambahEmailSiswa')->middleware('checkRole:admin,sadmin');
-Route::get('/dashboard', function () {
-    return view('admin.dashboard');
-})->middleware('checkRole:admin,sadmin');
+Route::get('/dashboard', [CalonSiswaController::class, 'dashboard'])->middleware('checkRole:admin,sadmin');
 Route::get('/konfirmasipembayaran', [PembayaranSppController::class, 'konfirmasiPembayaran'])->name('konfirmasiPembayaranSpp')->middleware('checkRole:admin,sadmin');
 Route::get('/pembayaran/{calonSiswa}/konfirmasi', [PembayaranSppController::class, 'konfirmasi'])->name('konfirmasiGet')->middleware('checkRole:admin,sadmin');
 Route::post('/konfirmasi', [PembayaranSppController::class, 'konfirmasiPost'])->name('konfirmasi')->middleware('checkRole:admin,sadmin');
 Route::post('/ubahstatus', [PembayaranSppController::class, 'ubahStatus'])->name('ubasStatusPembayaranSpp')->middleware('checkRole:admin,sadmin');
 Route::post('/hapusbuktipembayaran', [PembayaranSppController::class, 'hapus'])->name('hapusBuktiPembayaran')->middleware('checkRole:admin,sadmin');
+Route::get('/siswa/{id}/edit', [SiswaController::class, 'editsiswa'])->name('editSiswa')->middleware('checkRole:admin,sadmin');
+Route::post('updatesiswa', [SiswaController::class, 'updateSiswa'])->name('updateSiswa')->middleware('checkRole:admin,sadmin');
+Route::post('hapussiswa', [SiswaController::class, 'hapusSiswa'])->name('hapusSiswa')->middleware('checkRole:admin,sadmin');
+Route::get('spp', [PembayaranSppController::class, 'showspp'])->name('showSpp')->middleware('checkRole:admin,sadmin');
+Route::post('ubahnominal', [PembayaranSppController::class, 'ubahNominal'])->name('ubahNominal')->middleware('checkRole:admin,sadmin');
 
 
 Route::get('/alluser', [UserController::class, 'index'])->name('allUser')->middleware('checkRole:sadmin,admin');
-Route::post('/updaterole', [UserController::class, 'updateRole'])->name('updateRole')->middleware('checkRole:sadmin');
+Route::post('/updaterole', [UserController::class, 'updateRole'])->name('updateRole')->middleware('checkRole:sadmin,admin');
 Route::get('/registeruser', function () {
     return view('admin.register');
 })->middleware('checkRole:sadmin,admin');

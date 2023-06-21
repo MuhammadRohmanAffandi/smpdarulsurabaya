@@ -13,7 +13,8 @@
                     <li><a href="{{url('allcalonsiswa')}}"><i class="icon-list-alt"></i><span>Calon Siswa</span> </a> </li>
                     <li><a href="{{url('alluser')}}"><i class="icon-user"></i><span>Users</span> </a> </li>
                     <li><a href="{{url('allsiswa')}}"><i class="icon-user"></i><span>Siswa</span> </a></li>
-                    <li><a href="{{url('konfirmasipembayaran')}}"><i class="icon-dollar"></i><span>Pembayaran SPPP</span> </a> </li>
+                    <li><a href="{{url('konfirmasipembayaran')}}"><i class="icon-dollar"></i><span>Pembayaran spp</span> </a> </li>
+                    <li><a href="{{url('spp')}}"><i class="icon-dollar"></i><span>daftar spp</span> </a> </li>
                 </ul>
             </div>
             <!-- /container -->
@@ -125,7 +126,7 @@
                                             </select>
                                         </div>
                                         <div class="modal-footer">
-                                            <input type="submit" value="SUBMIT" class="btn-primary" />
+                                            <input type="submit" value="SUBMIT" class="btn btn-primary" />
                                         </div>
                                     </form>
                                 </div>

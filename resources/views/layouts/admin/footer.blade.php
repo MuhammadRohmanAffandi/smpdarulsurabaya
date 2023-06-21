@@ -4,44 +4,44 @@
             <div class="row">
                 <div class="span3">
                     <h4>
-                        About Free Admin Template</h4>
+                        Peta Sekolah</h4>
                     <ul>
-                        <li><a href="javascript:;">EGrappler.com</a></li>
-                        <li><a href="javascript:;">Web Development Resources</a></li>
-                        <li><a href="javascript:;">Responsive HTML5 Portfolio Templates</a></li>
-                        <li><a href="javascript:;">Free Resources and Scripts</a></li>
+                        <div id="map" style="width: 200px; height: 200px;"></div>
+
+                        <script src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&callback=initMap" async defer></script>
+
+                        <script>
+                            function initMap() {
+                                // Inisialisasi peta dengan koordinat dan opsi yang sesuai
+                                var map = new google.maps.Map(document.getElementById('map'), {
+                                    center: {
+                                        lat: -7.255625605978664,
+                                        lng: 112.66487353761738
+                                    },
+                                    zoom: 12
+                                });
+
+                                // Tambahkan marker ke peta
+                                var marker = new google.maps.Marker({
+                                    position: {
+                                        lat: -7.255625605978664,
+                                        lng: 112.66487353761738
+                                    },
+                                    map: map,
+                                    title: 'Lokasi'
+                                });
+                            }
+                        </script>
                     </ul>
                 </div>
                 <!-- /span3 -->
                 <div class="span3">
                     <h4>
-                        Support</h4>
+                        Service </h4>
                     <ul>
-                        <li><a href="javascript:;">Frequently Asked Questions</a></li>
-                        <li><a href="javascript:;">Ask a Question</a></li>
-                        <li><a href="javascript:;">Video Tutorial</a></li>
-                        <li><a href="javascript:;">Feedback</a></li>
-                    </ul>
-                </div>
-                <!-- /span3 -->
-                <div class="span3">
-                    <h4>
-                        Something Legal</h4>
-                    <ul>
-                        <li><a href="javascript:;">Read License</a></li>
-                        <li><a href="javascript:;">Terms of Use</a></li>
-                        <li><a href="javascript:;">Privacy Policy</a></li>
-                    </ul>
-                </div>
-                <!-- /span3 -->
-                <div class="span3">
-                    <h4>
-                        Open Source jQuery Plugins</h4>
-                    <ul>
-                        <li><a href="">Open Source jQuery Plugins</a></li>
-                        <li><a href="">HTML5 Responsive Tempaltes</a></li>
-                        <li><a href="">Free Contact Form Plugin</a></li>
-                        <li><a href="">Flat UI PSD</a></li>
+                        <li><a href="javascript:;">Pendaftaran Peserta Didik Baru</a></li>
+                        <li><a href="javascript:;">Pembayaran SPP</a></li>
+                        <li><a href="javascript:;">Admin</a></li>
                     </ul>
                 </div>
                 <!-- /span3 -->
@@ -57,7 +57,7 @@
     <div class="footer-inner">
         <div class="container">
             <div class="row">
-                <div class="span12"> &copy; 2013 <a href="#">Bootstrap Responsive Admin Template</a>. </div>
+                <div class="span12"> &copy; 2013 <a href="#">SMP Darul Ulum Surabaya</a>. </div>
                 <!-- /span12 -->
             </div>
             <!-- /row -->

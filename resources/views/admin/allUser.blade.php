@@ -2,6 +2,14 @@
 <html lang="en">
 
 @include('layouts.admin.head')
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+<style>
+    #myPanzoom {
+        max-width: 600px;
+        height: 400px;
+        background: #eee;
+    }
+</style>
 
 <body>
     @if(session()->has('message'))
@@ -10,6 +18,9 @@
     </div>
     @endif
     @include('layouts.admin.navbar')
+    <div class="alert alert-warning">
+        Hanya Super Admin yang Bisa Merubah Role User
+    </div>
     <div class="subnavbar">
         <div class="subnavbar-inner">
             <div class="container">
@@ -18,7 +29,8 @@
                     <li><a href="{{url('allcalonsiswa')}}"><i class="icon-list-alt"></i><span>Calon Siswa</span> </a> </li>
                     <li class="active"><a href=""><i class="icon-user"></i><span>Users</span> </a> </li>
                     <li><a href="{{url('allsiswa')}}"><i class="icon-user"></i><span>Siswa</span> </a></li>
-                    <li><a href="{{url('konfirmasipembayaran')}}"><i class="icon-dollar"></i><span>Pembayaran SPPP</span> </a> </li>
+                    <li><a href="{{url('konfirmasipembayaran')}}"><i class="icon-dollar"></i><span>Pembayaran spp</span> </a> </li>
+                    <li><a href="{{url('spp')}}"><i class="icon-dollar"></i><span>daftar spp</span> </a> </li>
                 </ul>
             </div>
             <!-- /container -->
@@ -26,8 +38,8 @@
         <!-- /subnavbar-inner -->
     </div>
 
-    <div class="">
-        <table class="table">
+    <div class="container">
+        <table class="table" id="myTable">
             <thead>
                 <tr class="table-top">
                     <th scope="col">No</th>
@@ -63,7 +75,7 @@
                                     </select>
                                 </div>
                                 <div class="modal-footer">
-                                    <input type="submit" value="SUBMIT" class="btn-primary" />
+                                    <input type="submit" value="SUBMIT" class="btn btn-primary" />
                                 </div>
                             </form>
                         </div>
@@ -72,7 +84,6 @@
                 @endforeach
             </tbody>
         </table>
-        @if(Auth::user()->role!="sadmin")
         <a href="{{url('registeruser')}}">
             <div style="
         width: 70px;
@@ -91,7 +102,6 @@
         right: 50px;
         bottom: 50px;"> + </div>
         </a>
-        @endif
     </div>
 
 
@@ -100,6 +110,13 @@
 ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     @include('layouts.admin.script')
+
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#myTable').DataTable();
+        });
+    </script>
 </body>
 
 </html>

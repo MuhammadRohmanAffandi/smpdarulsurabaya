@@ -13,7 +13,8 @@
                     <li><a href="{{url('allcalonsiswa')}}"><i class="icon-list-alt"></i><span>Calon Siswa</span> </a> </li>
                     <li><a href="{{url('alluser')}}"><i class="icon-user"></i><span>Users</span> </a> </li>
                     <li><a href="{{url('allsiswa')}}"><i class="icon-user"></i><span>Siswa</span> </a></li>
-                    <li><a href="{{url('konfirmasipembayaran')}}"><i class="icon-dollar"></i><span>Pembayaran SPPP</span> </a> </li>
+                    <li><a href="{{url('konfirmasipembayaran')}}"><i class="icon-dollar"></i><span>Pembayaran spp</span> </a> </li>
+                    <li><a href="{{url('spp')}}"><i class="icon-dollar"></i><span>daftar spp</span> </a> </li>
                 </ul>
             </div>
             <!-- /container -->
@@ -23,7 +24,7 @@
 
     <div class="container">
 
-        <h2 class="text-center">Form Tambah Siswa</h2>
+        <h2 class="text-center">Form Tambah Users</h2>
         @if(session()->has('message'))
         <div class="alert alert-success">
             {{ session()->get('message') }}
@@ -32,7 +33,7 @@
         <br>
 
         <div class="tab-pane" id="formcontrols">
-            <form method="POST" id="edit-profile" class="form-horizontal" action="{{ route('tambahSiswa') }}">
+            <form method="POST" id="edit-profile" class="form-horizontal" action="{{ route('registerUser') }}">
                 @csrf
 
                 <fieldset>
