@@ -24,7 +24,7 @@
 
     <div class="container">
 
-        <h2 class="text-center">Form Tambah Siswa</h2>
+        <h2 class="text-center">Form Tambah Users</h2>
         @if(session()->has('message'))
         <div class="alert alert-success">
             {{ session()->get('message') }}

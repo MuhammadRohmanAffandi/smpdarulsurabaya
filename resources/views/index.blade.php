@@ -4,15 +4,8 @@
 <head>
    <!-- basic -->
    <meta charset="utf-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <!-- mobile metas -->
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <meta name="viewport" content="initial-scale=1, maximum-scale=1">
    <!-- site metas -->
    <title>SMP Darul Ulum Surabaya</title>
-   <meta name="keywords" content="">
-   <meta name="description" content="">
-   <meta name="author" content="">
    <!-- bootstrap css -->
    <link rel="stylesheet" href="css/bootstrap.css">
    <!-- style css -->
@@ -22,10 +15,6 @@
    <!-- fevicon -->
    <link rel="icon" href="images/fevicon.png" type="image/gif" />
    <!-- Tweaks for older IEs-->
-   <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
-   <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
 </head>
 <!-- body -->
 
@@ -67,28 +56,13 @@
                         <li class="nav-item">
                            <a class="nav-link" href="cekstatuspendaftaran">cek status</a>
                         </li>
-                        @if(Auth::check())
-                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                           <div style="
-                           background-color: #007bff;
-                           padding: 0.375rem 0.75rem;
-                           border-radius: 10%;
-                           box-shadow: 0 6px 10px 0 #666;
-                           transition: all 0.1s ease-in-out;
-                           color: white;
-                           text-align: center;
-
-                           position: fixed;
-                           right: 50px;
-                           bottom: 50px;">
-                              Logout
-                           </div>
-                        </a>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                           {{ csrf_field() }}
-                        </form>
-                        @endif
+                        <li class="nav-item">
+                           <a class="nav-link" style="    color: #fff;
+    background-color: #2e428b;
+    border-color: #2e428b;
+    padding: 0.375rem 0.75rem;
+    border-radius: 0.25rem;" href="{{url('login')}}">Login</a>
+                        </li>
                      </ul>
                   </div>
                </nav>
