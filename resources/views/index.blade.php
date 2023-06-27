@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+   <link rel="icon" href="{{ asset('images/logo.ico') }}" type="image/x-icon">
    <!-- basic -->
    <meta charset="utf-8">
    <!-- site metas -->

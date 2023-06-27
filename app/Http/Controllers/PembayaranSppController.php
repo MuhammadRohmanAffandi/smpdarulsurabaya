@@ -81,20 +81,26 @@ class PembayaranSppController extends Controller
         return response()->file('bukti_pembayaran_spp/' . $path);
     }
 
-    public function konfirmasi(string $id)
+    public function konfirmasi(string $id_bukti_pembayaran)
     {
-        $spp = DB::table('spps')->join('siswas', 'spps.id_siswa', '=', 'siswas.id')->select('spps.*', 'siswas.nama')->where('id_siswa', $id)->where('lunas', 0)->get();
-        // $spp = Spp::where('id_siswa', $id)->where('lunas', 0)->get();
+        $bukti_pembayaran = BuktiPembayaran::find($id_bukti_pembayaran);
+        // echo $bukti_pembayaran;
+        $spp = DB::table('spps')->join('siswas', 'spps.id_siswa', '=', 'siswas.id')->join('bukti_pembayarans', 'spps.id_siswa', '=', 'bukti_pembayarans.id_siswa')->select('spps.*', 'bukti_pembayarans.id as id_bukti', 'bukti_pembayarans.bukti_pembayaran', 'siswas.nama')->where('spps.id_siswa', $bukti_pembayaran->id_siswa)->where('lunas', 0)->where('telah_dikonfirmasi', 0)->get();
+        // dd($spp);
+        // echo ($spp[0]->nama);
+        // echo $spp[0];
+        // // $spp = Spp::where('id_siswa', $id)->where('lunas', 0)->get();
         return view('admin.konfirmasi')->with('spp', $spp);
     }
 
     public function konfirmasiPost(Request $request)
     {
+        // dd($request->id_bukti);
 
         $formData = $request->all();
         $i = 0;
         foreach ($formData as $key => $value) {
-            if ($i == 0) {
+            if ($i == 0 || $i == 1) {
                 $i++;
                 continue;
             }
@@ -103,7 +109,10 @@ class PembayaranSppController extends Controller
             $data->save();
             $i++;
         }
-        // echo "hallo";
+        $bukti = BuktiPembayaran::find($request->id_bukti);
+        $bukti->telah_dikonfirmasi = 1;
+        $bukti->save();
+        // // echo "hallo";
 
         return redirect('konfirmasipembayaran')->with('message', 'Pembayaran Dikonfirmasi');
     }

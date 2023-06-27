@@ -31,8 +31,8 @@
                     <li><a href="{{url('allcalonspp')}}"><i class="icon-list-alt"></i><span>Calon spp</span> </a> </li>
                     <li><a href="{{url('alluser')}}"><i class="icon-user"></i><span>Users</span> </a> </li>
                     <li><a href="{{url('allspp')}}"><i class="icon-user"></i><span>spp</span> </a></li>
-                    <li><a href="{{url('konfirmasipembayaran')}}"><i class="icon-dollar"></i><span>Pembayaran spp</span> </a> </li>
-                    <li class="active"><a href="{{url('spp')}}"><i class="icon-dollar"></i><span>daftar spp</span> </a> </li>
+                    <li><a href="{{url('konfirmasipembayaran')}}"><i class="icon-dollar"></i><span>Konfirmasi Pembayaran SPP</span> </a> </li>
+                    <li class="active"><a href="{{url('spp')}}"><i class="icon-dollar"></i><span>Daftar SPP</span> </a> </li>
                 </ul>
             </div>
             <!-- /container -->
@@ -49,7 +49,7 @@
                     <th scope="col">Nama</th>
                     <th scope="col">NISN</th>
                     <th scope="col">nominal</th>
-                    <th scope="col">lunas</th>
+                    <th scope="col">Status</th>
                     <th scope="col">action</th>
                 </tr>
             </thead>
@@ -61,7 +61,11 @@
                     <td>{{$spps->nama}}</td>
                     <td>{{$spps->nisn}}</td>
                     <td>{{$spps->nominal}}</td>
-                    <td>{{$spps->lunas}}</td>
+                    @if($spps->lunas == 0)
+                    <td>Belum Lunas</td>
+                    @else
+                    <td>Lunas</td>
+                    @endif
                     <td>
                         <a data-toggle="modal" data-id="{{$spps->id}}" title="Add this item" class="open-AddBookDialog btn btn-primary" href="#addBookDialog">Ubah Nominal</a>
                         <div class="modal hide" id="addBookDialog">

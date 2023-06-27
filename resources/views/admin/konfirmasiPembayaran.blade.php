@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <link rel="icon" href="{{ asset('images/logo.ico') }}" type="image/x-icon">
     <meta charset="utf-8">
     <title>SMP Darul Ulum Surabaya Admin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -13,7 +14,7 @@
     <link href="{{asset('admin/css/style.css')}}" rel="stylesheet">
     <link href="{{asset('admin/css/pages/dashboard.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/panzoom/panzoom.css" />
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/panzoom/panzoom.css" />
     <style>
         #myPanzoom {
             max-width: 600px;
@@ -37,7 +38,7 @@
                     <li><a href="{{url('allcalonsiswa')}}"><i class="icon-list-alt"></i><span>Calon Siswa</span> </a> </li>
                     <li><a href="{{url('alluser')}}"><i class="icon-user"></i><span>Users</span> </a> </li>
                     <li><a href="{{url('allsiswa')}}"><i class="icon-user"></i><span>Siswa</span> </a></li>
-                    <li class="active"><a href="{{url('konfirmasipembayaran')}}"><i class="icon-dollar"></i><span>Pembayaran spp</span> </a> </li>
+                    <li class="active"><a href="{{url('konfirmasipembayaran')}}"><i class="icon-dollar"></i><span>Konfirmasi Pembayaran SPP</span> </a> </li>
                     <li><a href="{{url('spp')}}"><i class="icon-dollar"></i><span>Daftar SPP</span> </a> </li>
                 </ul>
             </div>
@@ -80,35 +81,15 @@
                     <td>
                         @if($bukti_pembayarans->telah_dikonfirmasi == 0)
                         <b>Bukti Pembayaran Belum Dikonfirmasi</b>
+                        <a class="btn btn-warning" href="{{ route('konfirmasiGet', $bukti_pembayarans->id)}}">Konfirmasi Pembayaran</a>
                         @else
                         <b>Bukti Pembayaran Telah Dikonfirmasi</b>
                         @endif
                         <br>
-                        <a class="btn btn-warning" href="{{ route('konfirmasiGet', $bukti_pembayarans->id_siswa)}}">Konfirmasi Pembayaran</a>
-                        <a data-toggle="modal" data-id="{{$bukti_pembayarans->id}}" title="Add this item" class="open-AddBookDialog btn btn-primary" href="#addBookDialog">Ubah Status</a>
-                        <div class="modal hide" id="addBookDialog">
-                            <div class="modal-header">
-                                <h3 class="modal-title">Ubah Status</h3>
-                                <button class="close" data-dismiss="modal">×</button>
-                            </div>
-                            <form id="subscribe-email-form" enctype="multipart/form-data" method="POST" action="{{route('ubasStatusPembayaranSpp')}}">
-                                @csrf
-                                <div class="modal-body">
-                                    <input type="hidden" name="bookId" id="bookId" value="" />
-                                    <select id="cars" name="status">
-                                        <option value="none" selected disabled hidden>Pilih Satu</option>
-                                        <option value="0">Belum Dikonfirmasi</option>
-                                        <option value="1">Telah Dikonfirmasi</option>
-                                    </select>
-                                </div>
-                                <div class="modal-footer">
-                                    <input type="submit" value="SUBMIT" class="btn btn-primary" />
-                                </div>
-                            </form>
-                        </div>
 
                     </td>
                     <td>
+                        @if($bukti_pembayarans->telah_dikonfirmasi == 0)
                         <a data-toggle="modal" data-id="{{$bukti_pembayarans->id}}" title="Add this item" class="open-AddBookDialog btn btn-danger" href="#hapus">Hapus</a>
                         <div class="modal hide" id="hapus">
                             <div class="modal-header">
@@ -125,6 +106,9 @@
                                 </div>
                             </form>
                         </div>
+                        @else
+                        <b>Bukti Pembayaran Tidak Dapat Dihapus Setelah Dikonfirmasi</b>
+                        @endif
                     </td>
                     <td>{{$bukti_pembayarans->created_at}}</td>
                 </tr>

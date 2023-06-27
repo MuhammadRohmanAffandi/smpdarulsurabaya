@@ -19,8 +19,8 @@
           <li><a href="{{url('allcalonsiswa')}}"><i class="icon-list-alt"></i><span>Calon Siswa</span> </a> </li>
           <li><a href="{{url('alluser')}}"><i class="icon-user"></i><span>Users</span> </a> </li>
           <li><a href="{{url('allsiswa')}}"><i class="icon-user"></i><span>Siswa</span> </a></li>
-          <li><a href="{{url('konfirmasipembayaran')}}"><i class="icon-dollar"></i><span>Pembayaran spp</span> </a> </li>
-          <li><a href="{{url('spp')}}"><i class="icon-dollar"></i><span>daftar spp</span> </a> </li>
+          <li><a href="{{url('konfirmasipembayaran')}}"><i class="icon-dollar"></i><span>Konfirmasi Pembayaran SPP</span> </a> </li>
+          <li><a href="{{url('spp')}}"><i class="icon-dollar"></i><span>Daftar SPP</span> </a> </li>
         </ul>
       </div>
       <!-- /container -->
@@ -54,7 +54,7 @@
                       <!-- .stat -->
 
                       <div class="stat"> <i class="icon-user"></i> <span class="value">{{DB::table('siswas')->count()}}</span>
-                        <p>Users</p>
+                        <p>Siswa</p>
                       </div>
                       <!-- .stat -->
 

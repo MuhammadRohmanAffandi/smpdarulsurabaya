@@ -16,6 +16,10 @@
     <div class="alert alert-danger">
         {{ session()->get('message') }}
     </div>
+    @elseif(session()->has('message-success'))
+    <div class="alert alert-success">
+        {{ session()->get('message-success') }}
+    </div>
     @endif
     @include('layouts.admin.navbar')
     <div class="alert alert-warning">
@@ -29,8 +33,8 @@
                     <li><a href="{{url('allcalonsiswa')}}"><i class="icon-list-alt"></i><span>Calon Siswa</span> </a> </li>
                     <li class="active"><a href=""><i class="icon-user"></i><span>Users</span> </a> </li>
                     <li><a href="{{url('allsiswa')}}"><i class="icon-user"></i><span>Siswa</span> </a></li>
-                    <li><a href="{{url('konfirmasipembayaran')}}"><i class="icon-dollar"></i><span>Pembayaran spp</span> </a> </li>
-                    <li><a href="{{url('spp')}}"><i class="icon-dollar"></i><span>daftar spp</span> </a> </li>
+                    <li><a href="{{url('konfirmasipembayaran')}}"><i class="icon-dollar"></i><span>Konfirmasi Pembayaran SPP</span> </a> </li>
+                    <li><a href="{{url('spp')}}"><i class="icon-dollar"></i><span>Daftar SPP</span> </a> </li>
                 </ul>
             </div>
             <!-- /container -->

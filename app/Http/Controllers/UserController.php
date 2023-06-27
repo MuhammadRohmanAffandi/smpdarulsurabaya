@@ -31,7 +31,7 @@ class UserController extends Controller
         $user = User::find($request->bookId);
         $user->role = $request->role;
         $user->update();
-        return redirect('alluser');
+        return redirect('alluser')->with('message-success', 'Berhasil Merubah Role User');
     }
 
     public function registerUser(Request $request)

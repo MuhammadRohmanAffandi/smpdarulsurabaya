@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <link rel="icon" href="{{ asset('images/logo.ico') }}" type="image/x-icon">
     <title>ItsolutionStuff.com</title>
 </head>
 
