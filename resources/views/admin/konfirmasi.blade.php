@@ -33,7 +33,7 @@
         <div class="subnavbar-inner">
             <div class="container">
                 <ul class="mainnav">
-                    <li><a href="dashboard"><i class="icon-dashboard"></i><span>Dashboard</span> </a> </li>
+                    <li><a href="{{url('dashboard')}}"><i class="icon-dashboard"></i><span>Dashboard</span> </a> </li>
                     <li><a href="{{url('allcalonsiswa')}}"><i class="icon-list-alt"></i><span>Calon Siswa</span> </a> </li>
                     <li><a href="{{url('alluser')}}"><i class="icon-user"></i><span>Users</span> </a> </li>
                     <li><a href="{{url('allsiswa')}}"><i class="icon-user"></i><span>Siswa</span> </a></li>

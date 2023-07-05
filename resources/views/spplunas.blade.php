@@ -43,6 +43,9 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="{{url('spplunas')}}">SPP Lunas</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url('buktipembayaran')}}">Menunggu Dikonfirmasi</a>
+                    </li>
                     <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         Logout
                     </a>
@@ -73,7 +76,6 @@
                 <table class="table" id="myTable">
                     <thead>
                         <tr class="table-top">
-                            <th scope="col">No</th>
                             <th scope="col">Nama</th>
                             <th scope="col">Tanggal SPP Dikonfirmasi Lunas</th>
                         </tr>
@@ -82,7 +84,6 @@
                         @if(count($spp)>0)
                         @foreach($spp as $spps)
                         <tr>
-                            <th scope="row">{{$loop->iteration}}</th>
                             <td>SPP bulan
                                 @if($spps->bulan=="1")
                                 januari

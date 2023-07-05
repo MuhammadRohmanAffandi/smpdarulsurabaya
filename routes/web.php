@@ -52,6 +52,7 @@ Route::post('/formpendaftaran', [CalonSiswaController::class, 'store'])->name('s
 Auth::routes(['register' => false]);
 
 Route::get('/pembayaranspp', [PembayaranSppController::class, 'index'])->middleware('checkRole:siswa,admin,sadmin');
+Route::get('/buktipembayaran', [PembayaranSppController::class, 'menungguDikonfirmasi'])->middleware('checkRole:siswa,admin,sadmin');
 Route::get('/spplunas', [PembayaranSppController::class, 'sppLunas'])->middleware('checkRole:siswa,admin,sadmin');
 Route::post('/uploadbuktipembayaranspp', [PembayaranSppController::class, 'uploadBuktiPembayaranSpp'])->name('uploadBuktiPembayaranSpp')->middleware('checkRole:siswa');
 

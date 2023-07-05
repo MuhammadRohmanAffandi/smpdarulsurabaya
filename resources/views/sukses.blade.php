@@ -92,9 +92,9 @@
             <div id="multi-step-form-cek">
                <h2 class="text_align_center title-step-form">Kode Pendaftaran:</h2>
                <div class="form-inline">
-                  <input type=text value="{{Session::get('code')}}" class="form-control-status" id="code"></input>
+                  <input type=text value="{{Session::get('code')}}" class="form-control-status" id="myInput"></input>
                   <div class="text_align_center">
-                     <button onclick="copyToClip()" class="button" style="background-color: #00A4A5;">Copy Kode</button>
+                     <button onclick="copyToClipboard()" class="button" style="background-color: #00A4A5;">Copy Kode</button>
                   </div>
                </div>
                <div class="text_align_center">
@@ -105,22 +105,7 @@
       </div>
    </div>
 
-   <script>
-      function copyToClip() {
-         // Get the text field
-         var copyText = document.getElementById("code");
 
-         // Select the text field
-         copyText.select();
-         copyText.setSelectionRange(0, 99999); // For mobile devices
-
-         // Copy the text inside the text field
-         navigator.clipboard.writeText(copyText.value);
-
-         // Alert the copied text
-         alert("Copied the text: " + copyText.value);
-      }
-   </script>
    <!-- contact -->
    <!--  footer -->
    <footer>
@@ -177,6 +162,14 @@
    <!-- sidebar -->
    <script src="js/custom.js"></script>
    <script src="js/form.js"></script>
+   <script>
+      function copyToClipboard() {
+         var copyText = document.getElementById("myInput");
+         copyText.select();
+         copyText.setSelectionRange(0, 99999);
+         document.execCommand("copy");
+      }
+   </script>
 </body>
 
 </html>

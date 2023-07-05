@@ -158,11 +158,11 @@
                            <input type="text" class="form-control" id="agama" placeholder="Masukan Agama" name="agama" value="{{ old('agama') }}">
                         </div>
                         <div class="form-group">
-                           <label>Pas Foto</label>
+                           <label>Pas Foto <span style="color: red;">*jpg, jpeg, png</span></label>
                            <input type="file" class="form-control" id="pasFoto" name="file_path_pas_foto" value="{{ old('file_path_pas_foto') }}">
                         </div>
                         <div class="form-group">
-                           <label>KK</label>
+                           <label>KK <span style="color: red;">*pdf</span></label>
                            <input type="file" class="form-control" id="kk" name="file_path_kk" value="{{ old('file_path_kk') }}">
                         </div>
                      </div>
@@ -215,7 +215,7 @@
                            <input type="text" class="form-control" id="namaSekolah" placeholder="Masukan Nama Sekolah" name="nama_sekolah" value="{{ old('nama_sekolah') }}">
                         </div>
                         <div class="form-group">
-                           <label>Ijasah</label>
+                           <label>Ijasah <span style="color: red;">*pdf</span></label>
                            <input type="file" class="form-control" id="ijasah" name="file_path_ijasah" value="{{ old('file_path_ijasah') }}">
                         </div>
                         <div class="form-group">

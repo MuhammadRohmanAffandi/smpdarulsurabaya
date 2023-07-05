@@ -25,6 +25,19 @@ class PembayaranSppController extends Controller
         $spp = Spp::where('id_siswa', $idSiswa[0]->id)->where('lunas', 0)->get();
         return view('pembayaranSpp', compact('spp'));
     }
+    public function menungguDikonfirmasi()
+    {
+        if (Auth::user()->role != "siswa") {
+            return redirect('dashboard')->with('error', "Anda Bukan Siswa!");
+        }
+        $idUser = Auth::id();
+        $idSiswa = Siswa::where('id_user', $idUser)->get();
+        if (!count($idSiswa) > 0) {
+            return view('emailTidakTertaut');
+        }
+        $bukti = BuktiPembayaran::where('id_siswa', $idSiswa[0]->id)->get();
+        return view('menungguDikonfirmasi', compact('bukti'));
+    }
 
     public function ubahNominal(Request $request)
     {
@@ -85,7 +98,7 @@ class PembayaranSppController extends Controller
     {
         $bukti_pembayaran = BuktiPembayaran::find($id_bukti_pembayaran);
         // echo $bukti_pembayaran;
-        $spp = DB::table('spps')->join('siswas', 'spps.id_siswa', '=', 'siswas.id')->join('bukti_pembayarans', 'spps.id_siswa', '=', 'bukti_pembayarans.id_siswa')->select('spps.*', 'bukti_pembayarans.id as id_bukti', 'bukti_pembayarans.bukti_pembayaran', 'siswas.nama')->where('spps.id_siswa', $bukti_pembayaran->id_siswa)->where('lunas', 0)->where('telah_dikonfirmasi', 0)->get();
+        $spp = DB::table('spps')->join('siswas', 'spps.id_siswa', '=', 'siswas.id')->join('bukti_pembayarans', 'spps.id_siswa', '=', 'bukti_pembayarans.id_siswa')->select('spps.*', 'bukti_pembayarans.id as id_bukti', 'bukti_pembayarans.bukti_pembayaran', 'siswas.nama')->where('spps.id_siswa', $bukti_pembayaran->id_siswa)->where('lunas', 0)->where('telah_dikonfirmasi', 0)->where('bukti_pembayarans.id', $id_bukti_pembayaran)->get();
         // dd($spp);
         // echo ($spp[0]->nama);
         // echo $spp[0];
